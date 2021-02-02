@@ -14,6 +14,7 @@
 		7124967D25C4A3F60059FEE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7124967C25C4A3F60059FEE0 /* Assets.xcassets */; };
 		7124968025C4A3F60059FEE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7124967E25C4A3F60059FEE0 /* LaunchScreen.storyboard */; };
 		7124968B25C4BE6F0059FEE0 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7124968A25C4BE6E0059FEE0 /* ViewController1.swift */; };
+		71D877AD25C9B210006064F8 /* TableViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D877AC25C9B210006064F8 /* TableViewController1.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		7124967F25C4A3F60059FEE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7124968125C4A3F60059FEE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7124968A25C4BE6E0059FEE0 /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
+		71D877AC25C9B210006064F8 /* TableViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				7124967E25C4A3F60059FEE0 /* LaunchScreen.storyboard */,
 				7124968125C4A3F60059FEE0 /* Info.plist */,
 				7124968A25C4BE6E0059FEE0 /* ViewController1.swift */,
+				71D877AC25C9B210006064F8 /* TableViewController1.swift */,
 			);
 			path = less_1_IOS;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			files = (
 				7124968B25C4BE6F0059FEE0 /* ViewController1.swift in Sources */,
 				7124967825C4A3F30059FEE0 /* ViewController.swift in Sources */,
+				71D877AD25C9B210006064F8 /* TableViewController1.swift in Sources */,
 				7124967425C4A3F30059FEE0 /* AppDelegate.swift in Sources */,
 				7124967625C4A3F30059FEE0 /* SceneDelegate.swift in Sources */,
 			);
