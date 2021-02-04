@@ -1,23 +1,33 @@
 //
-//  TableViewController1.swift
+//  TableViewController2.swift
 //  less_1_IOS
 //
-//  Created by elf on 02.02.2021.
+//  Created by elf on 04.02.2021.
 //
 
 import UIKit
 
-class TableViewController1: UITableViewController {
+class TableViewController2: UITableViewController {
 
+    @IBAction func pushBarButton(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "psubBarButton", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.title = "Item 2"
+//        let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(tapButton))
+//        self.navigationItem.rightBarButtonItem = addBarButton
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+       self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+//    @objc func tapButton () {
+//        print("Button is tapped")
+//    }
 
     // MARK: - Table view data source
 
@@ -28,12 +38,12 @@ class TableViewController1: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return 5
     }
 
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier2", for: indexPath)
 
         // Configure the cell...
 
@@ -41,7 +51,7 @@ class TableViewController1: UITableViewController {
     }
 
 
-    /* 
+    /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
