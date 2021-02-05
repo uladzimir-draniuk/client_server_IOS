@@ -224,9 +224,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="m8X-Oa-pkY" kind="show" id="fuM-iB-CS8"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -266,7 +263,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="jB2-nV-weo" kind="show" id="N9G-r8-1kF"/>
+                                    <segue destination="jB2-nV-weo" kind="showDetail" trigger="accessoryAction" id="qXM-oS-bE8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -276,6 +273,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="0Ah-Fo-yPp"/>
+                    <connections>
+                        <outlet property="table_item1" destination="Xyw-U2-wju" id="hpI-8y-7ll"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eno-HR-dPs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -323,9 +323,6 @@
             <point key="canvasLocation" x="-826.08695652173924" y="-588.61607142857144"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="fuM-iB-CS8"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="folder" catalog="system" width="128" height="97"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>

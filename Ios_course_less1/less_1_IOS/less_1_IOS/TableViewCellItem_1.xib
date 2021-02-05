@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell_item1" selectionStyle="default" indentationWidth="10" rowHeight="61" id="KGk-i7-Jjw" customClass="TableViewCellItem_1" customModule="less_1_IOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="381" height="61"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="381" height="61"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlR-RP-wgC">
+                        <rect key="frame" x="30" y="20" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zoh-MQ-r3B">
+                        <rect key="frame" x="184" y="0.0" width="164" height="61"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="zoh-MQ-r3B" secondAttribute="trailing" constant="33" id="KsV-xp-TzE"/>
+                    <constraint firstItem="RlR-RP-wgC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="WE1-Dz-7xt"/>
+                    <constraint firstItem="zoh-MQ-r3B" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="184" id="b8v-51-0vf"/>
+                    <constraint firstItem="RlR-RP-wgC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="gxY-7s-H2W"/>
+                    <constraint firstItem="zoh-MQ-r3B" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tdm-ld-O85"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="LabelItem_1" destination="RlR-RP-wgC" id="OAq-Sb-lZu"/>
+                <outlet property="item1_image" destination="zoh-MQ-r3B" id="Z6l-Bb-M4N"/>
+            </connections>
+            <point key="canvasLocation" x="96.376811594202906" y="130.24553571428572"/>
+        </tableViewCell>
+    </objects>
+</document>

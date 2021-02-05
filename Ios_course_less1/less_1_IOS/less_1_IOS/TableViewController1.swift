@@ -9,15 +9,13 @@ import UIKit
 
 class TableViewController1: UITableViewController {
 
+    @IBOutlet var table_item1: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
+        
+        table_item1.register(UINib(nibName: "TableViewCellItem_1", bundle: nil), forCellReuseIdentifier: "Cell_item1")
+  }
 
     // MARK: - Table view data source
 
@@ -33,7 +31,7 @@ class TableViewController1: UITableViewController {
 
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell_item1", for: indexPath) as! TableViewCellItem_1
 
         // Configure the cell...
 
