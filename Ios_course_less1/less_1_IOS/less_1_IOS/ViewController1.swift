@@ -21,7 +21,11 @@ class ViewController1: UIViewController {
     @IBAction func checkForm(_ sender: Any) {
         if self.textName.text == checkName, self.textPassword.text == checkPassword {
             self.resultText.text = "Вы вошли!"
+            
+            self.performSegue(withIdentifier: "buttonWork", sender: self)
 
+        } else {
+            self.resultText.text = "Неверное имя или пароль"
         }
     }
     
