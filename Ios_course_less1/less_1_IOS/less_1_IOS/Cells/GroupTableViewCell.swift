@@ -1,21 +1,16 @@
 //
-//  TableViewCellItem_1.swift
+//  GroupTableViewCell.swift
 //  less_1_IOS
 //
-//  Created by elf on 06.02.2021.
+//  Created by elf on 09.02.2021.
 //
 
 import UIKit
 
-class TableViewCellItem_1: UITableViewCell {
+class GroupTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var LabelItem_1: UILabel! {
-        didSet{
-            LabelItem_1.text = "Иванов"
-        }
-    }
-    @IBOutlet weak var item1_image: UIImageView!
-    
+    @IBOutlet var groupImage: UIImageView!
+    @IBOutlet var groupName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

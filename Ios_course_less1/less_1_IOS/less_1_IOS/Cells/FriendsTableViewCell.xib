@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" restorationIdentifier="FriendCell" selectionStyle="blue" indentationWidth="10" reuseIdentifier="FriendCell" rowHeight="80" id="KGk-i7-Jjw" customClass="FriendsTableViewCell" customModule="less_1_IOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="577" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM" customClass="FriendsTableViewCell" customModule="less_1_IOS" customModuleProvider="target">
+                <rect key="frame" x="0.0" y="0.0" width="577" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s7d-pC-IaB">
+                        <rect key="frame" x="20" y="15" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="GRc-pJ-KhW"/>
+                            <constraint firstAttribute="width" constant="50" id="q8V-dm-3Me"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0Y-eO-ngH">
+                        <rect key="frame" x="135" y="30" width="41.5" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="s7d-pC-IaB" secondAttribute="bottom" constant="20" symbolic="YES" id="AMb-AK-v8g"/>
+                    <constraint firstItem="s7d-pC-IaB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Ifu-nz-ruR"/>
+                    <constraint firstItem="h0Y-eO-ngH" firstAttribute="leading" secondItem="s7d-pC-IaB" secondAttribute="trailing" constant="50" id="ab0-n7-a5l"/>
+                    <constraint firstItem="s7d-pC-IaB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="hLR-hm-uGg"/>
+                    <constraint firstItem="h0Y-eO-ngH" firstAttribute="centerY" secondItem="s7d-pC-IaB" secondAttribute="centerY" id="md4-P9-uUc"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="AvatarImage" destination="s7d-pC-IaB" id="zC2-3Z-iug"/>
+                <outlet property="friendName" destination="h0Y-eO-ngH" id="ACH-4m-5Or"/>
+            </connections>
+            <point key="canvasLocation" x="289.13043478260875" y="52.901785714285715"/>
+        </tableViewCell>
+    </objects>
+</document>

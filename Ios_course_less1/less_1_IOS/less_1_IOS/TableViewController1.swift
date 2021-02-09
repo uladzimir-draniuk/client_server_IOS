@@ -9,12 +9,19 @@ import UIKit
 
 class TableViewController1: UITableViewController {
 
+    
+    private var friends = [
+        Friend(id: 1, name: "Ivanov", surname: "Pigov", avatarImage: "pigs", isFriend: true, photos: ["pig_1", "pig_2", "pig_3"]),
+        Friend(id: 2, name: "Petrov", surname: "Lionov", avatarImage: "lion", isFriend: true, photos: ["lion_1", "lion_2", "lion_3"]),
+    Friend(id: 3, name: "Sidorov", surname: "Bearnik", avatarImage: "bear", isFriend: true, photos: ["bear_1", "bear_2", "bear_3"])]
+    
     @IBOutlet var table_item1: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        table_item1.register(UINib(nibName: "TableViewCellItem_1", bundle: nil), forCellReuseIdentifier: "Cell_item1")
+        self.tableView.rowHeight = UITableView.automaticDimension
+        table_item1.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendCell")
   }
 
     // MARK: - Table view data source
@@ -26,18 +33,41 @@ class TableViewController1: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return friends.count
     }
 
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell_item1", for: indexPath) as! TableViewCellItem_1
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendTableViewCell
+        
+        cell.friendImageView.image = UIImage(named: self.friends[indexPath.row].avatarImage)
 
+        cell.friendName.text = self.friends[indexPath.row].name + " " + self.friends[indexPath.row].surname
+        
         // Configure the cell...
 
         return cell
     }
+    
+    var currIndex: IndexPath?
+    
+    
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.currIndex = indexPath
+        self.performSegue(withIdentifier: "showCollection", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard let indexPath = self.currIndex, segue.identifier == "showCollection" else { return }
+        
+        let vc = segue.destination as? PhotosCollectionViewController
+        vc?.data = self.friends[indexPath.row]
+    }
 
     /* 
     // Override to support conditional editing of the table view.

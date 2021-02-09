@@ -7,21 +7,19 @@
 
 import UIKit
 
-class TableViewController2: UITableViewController {
+class TableViewController3: UITableViewController {
 
     
     private var groups = [
-        Group(id: 1, name: "animals", avatarImage: "group_1", isMyGroup: true),
-        Group(id: 2, name: "cars", avatarImage: "group_2", isMyGroup: true)
+        Group(id: 3, name: "colors", avatarImage: "group_3", isMyGroup: false),
+        Group(id: 4, name: "guns", avatarImage: "group_4", isMyGroup: false)
     ]
     
     @IBOutlet var table_group: UITableView!
-    @IBAction func pushBarButton(_ sender: UIBarButtonItem) {
-        self.performSegue(withIdentifier: "psubBarButton", sender: self)
-    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "My Groups"
+        self.navigationItem.title = "Not my groups"
 
         table_group.register(UINib(nibName: "GroupTableViewCell", bundle: nil), forCellReuseIdentifier: "groupCell")
        self.navigationItem.rightBarButtonItem = self.editButtonItem
@@ -41,7 +39,7 @@ class TableViewController2: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return groups.count
+        return self.groups.count
     }
 
    
