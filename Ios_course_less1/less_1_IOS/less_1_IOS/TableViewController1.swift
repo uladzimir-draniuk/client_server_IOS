@@ -21,6 +21,9 @@ class TableViewController1: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.rowHeight = UITableView.automaticDimension
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Friends", style: .plain, target: self, action: nil)
+        
         table_item1.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendCell")
   }
 
