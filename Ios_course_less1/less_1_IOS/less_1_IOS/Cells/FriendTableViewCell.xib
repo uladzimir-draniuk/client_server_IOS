@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,36 +18,63 @@
                 <rect key="frame" x="0.0" y="0.0" width="396" height="93"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hdk-am-bWb">
-                        <rect key="frame" x="20" y="21" width="50" height="50"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="50" id="ci8-mM-7wA"/>
-                            <constraint firstAttribute="height" constant="50" id="kG5-QC-hI2"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ro-zp-WTw">
                         <rect key="frame" x="131" y="35.5" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="2Nc-fy-yEt" customClass="AvatarView" customModule="less_1_IOS" customModuleProvider="target">
+                        <rect key="frame" x="20" y="21" width="50" height="50"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KFZ-kd-bgq">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KFZ-kd-bgq" firstAttribute="leading" secondItem="2Nc-fy-yEt" secondAttribute="leading" id="5d2-In-1vj"/>
+                            <constraint firstAttribute="trailing" secondItem="KFZ-kd-bgq" secondAttribute="trailing" id="7aK-35-xZg"/>
+                            <constraint firstAttribute="bottom" secondItem="KFZ-kd-bgq" secondAttribute="bottom" id="PYA-Le-v9t"/>
+                            <constraint firstItem="KFZ-kd-bgq" firstAttribute="top" secondItem="2Nc-fy-yEt" secondAttribute="top" id="QRa-lq-4dt"/>
+                            <constraint firstAttribute="height" constant="50" id="QzV-5y-0mo"/>
+                            <constraint firstAttribute="width" constant="50" id="ttc-Zb-bgJ"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="25"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shaddowOffset">
+                                <size key="value" width="10" height="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="capacity">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="imageView" destination="KFZ-kd-bgq" id="AG0-x6-qGE"/>
+                        </connections>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="3Ro-zp-WTw" firstAttribute="leading" secondItem="hdk-am-bWb" secondAttribute="trailing" constant="61" id="00N-FH-s3L"/>
-                    <constraint firstItem="hdk-am-bWb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="7h8-i1-xvR"/>
-                    <constraint firstItem="3Ro-zp-WTw" firstAttribute="centerY" secondItem="hdk-am-bWb" secondAttribute="centerY" id="EbQ-PQ-K1n"/>
-                    <constraint firstAttribute="bottom" secondItem="hdk-am-bWb" secondAttribute="bottom" constant="22" id="Ioc-eD-bM5"/>
-                    <constraint firstItem="hdk-am-bWb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Iqg-LI-c68"/>
-                    <constraint firstItem="hdk-am-bWb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="jP1-2I-P15"/>
-                    <constraint firstItem="hdk-am-bWb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="kOe-ol-Vcy"/>
+                    <constraint firstItem="3Ro-zp-WTw" firstAttribute="centerY" secondItem="2Nc-fy-yEt" secondAttribute="centerY" id="91r-mY-Lac"/>
+                    <constraint firstItem="3Ro-zp-WTw" firstAttribute="leading" secondItem="2Nc-fy-yEt" secondAttribute="trailing" constant="61" id="E6Q-qK-HpO"/>
+                    <constraint firstItem="2Nc-fy-yEt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="KiM-qG-xrH"/>
+                    <constraint firstItem="2Nc-fy-yEt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="k7d-No-ec2"/>
+                    <constraint firstAttribute="bottom" secondItem="2Nc-fy-yEt" secondAttribute="bottom" constant="22" id="mkW-6f-ADN"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="friendImageView" destination="hdk-am-bWb" id="age-w8-kbw"/>
+                <outlet property="avatarView" destination="2Nc-fy-yEt" id="dIk-nr-p7x"/>
                 <outlet property="friendName" destination="3Ro-zp-WTw" id="eQ8-qh-Pnp"/>
             </connections>
             <point key="canvasLocation" x="-123.18840579710145" y="90.066964285714278"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -19,7 +19,7 @@ class PhotosCollectionViewController: UICollectionViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+//        self.collectionView.addSubview(self.likeButton)
         // Register cell classes
         self.collectionView.register(UINib(nibName: "FriendPhotosCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: self.reuseIdentifier)
 
@@ -51,13 +51,24 @@ class PhotosCollectionViewController: UICollectionViewController {
         return self.data.photos.count
     }
 
+    
+//    let likeButton = LikesButton()
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FriendPhotosCollectionViewCell
-        cell.photoFriend.image = UIImage(named: self.data.photos[indexPath.row])
-        // Configure the cell
-    
+        if indexPath.item < self.data.photos.count {
+            cell.photoFriend.image = UIImage(named: self.data.photos[indexPath.item])
+//            cell.likeButton = LikesButton.init(frame: CGRect(x: 80, y: 160, width: 20, height: 15))   // не хочет инициализороваться кнопка в ячейке
+        }
         return cell
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        self.likeButton.frame = CGRect(x: 80, y: 160, width: 20, height: 15)
+//        self.likeButton.backgroundColor = .darkGray
+//    }
 
     // MARK: UICollectionViewDelegate
 

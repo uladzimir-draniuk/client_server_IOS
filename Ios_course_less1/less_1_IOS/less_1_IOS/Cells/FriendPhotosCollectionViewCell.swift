@@ -11,6 +11,8 @@ class FriendPhotosCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var photoFriend: UIImageView!
     
+    @IBOutlet var likeButton: LikesButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
