@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="180" height="150"/>
                         <color key="backgroundColor" systemColor="systemTealColor"/>
                     </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lXv-XL-F5q" customClass="LikesButton" customModule="less_1_IOS" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lXv-XL-F5q">
                         <rect key="frame" x="0.0" y="150" width="180" height="30"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -47,8 +47,8 @@
             </constraints>
             <size key="customSize" width="294" height="206"/>
             <connections>
-                <outlet property="likeButton" destination="lXv-XL-F5q" id="87o-1n-rQW"/>
-                <outlet property="photoFriend" destination="ebK-cZ-aZZ" id="Cut-Oh-HfL"/>
+                <outlet property="likeButton" destination="lXv-XL-F5q" id="W1m-6m-fQH"/>
+                <outlet property="photoFriend" destination="ebK-cZ-aZZ" id="JEi-Ad-wfX"/>
             </connections>
             <point key="canvasLocation" x="217.39130434782609" y="97.767857142857139"/>
         </collectionViewCell>
