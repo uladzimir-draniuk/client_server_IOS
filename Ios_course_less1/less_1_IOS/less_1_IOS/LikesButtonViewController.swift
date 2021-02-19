@@ -23,7 +23,6 @@ class ViewController2: UIViewController {
             self.likeButton.addTarget(self, action: #selector(handleLikeTap), for: .touchUpInside)
         }
         
-
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             

@@ -14,6 +14,10 @@
 		7124967D25C4A3F60059FEE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7124967C25C4A3F60059FEE0 /* Assets.xcassets */; };
 		7124968025C4A3F60059FEE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7124967E25C4A3F60059FEE0 /* LaunchScreen.storyboard */; };
 		7124968B25C4BE6F0059FEE0 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7124968A25C4BE6E0059FEE0 /* ViewController1.swift */; };
+		716F564325E01FEC00F6B598 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F564125E01FEC00F6B598 /* NewsTableViewCell.swift */; };
+		716F564425E01FEC00F6B598 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 716F564225E01FEC00F6B598 /* NewsTableViewCell.xib */; };
+		716F564825E0612700F6B598 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F564725E0612700F6B598 /* NewsTableViewController.swift */; };
+		716F564B25E069AF00F6B598 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F564A25E069AF00F6B598 /* News.swift */; };
 		71752C1B25D1DB4300B0A660 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71752C1A25D1DB4300B0A660 /* Friend.swift */; };
 		71752C1F25D1DBCD00B0A660 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71752C1E25D1DBCD00B0A660 /* Group.swift */; };
 		71752C2E25D1F50200B0A660 /* FriendPhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71752C2C25D1F50200B0A660 /* FriendPhotosCollectionViewCell.swift */; };
@@ -41,6 +45,10 @@
 		7124967F25C4A3F60059FEE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7124968125C4A3F60059FEE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7124968A25C4BE6E0059FEE0 /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
+		716F564125E01FEC00F6B598 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		716F564225E01FEC00F6B598 /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
+		716F564725E0612700F6B598 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		716F564A25E069AF00F6B598 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		71752C1A25D1DB4300B0A660 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		71752C1E25D1DBCD00B0A660 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		71752C2C25D1F50200B0A660 /* FriendPhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotosCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -103,6 +111,7 @@
 				71D877AC25C9B210006064F8 /* TableViewController1.swift */,
 				71DF9D1525CC509500AFCD78 /* TableViewController2.swift */,
 				71752C4125D2101E00B0A660 /* TableViewController3.swift */,
+				716F564725E0612700F6B598 /* NewsTableViewController.swift */,
 				71752C3125D1F86E00B0A660 /* PhotosCollectionViewController.swift */,
 				71FA0A4125D9275600284131 /* AvatarView.swift */,
 			);
@@ -113,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				71752C1A25D1DB4300B0A660 /* Friend.swift */,
+				716F564A25E069AF00F6B598 /* News.swift */,
 				71752C1E25D1DBCD00B0A660 /* Group.swift */,
 			);
 			path = Model;
@@ -121,6 +131,8 @@
 		71752C2125D1DC4600B0A660 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				716F564125E01FEC00F6B598 /* NewsTableViewCell.swift */,
+				716F564225E01FEC00F6B598 /* NewsTableViewCell.xib */,
 				71752C2C25D1F50200B0A660 /* FriendPhotosCollectionViewCell.swift */,
 				71752C2D25D1F50200B0A660 /* FriendPhotosCollectionViewCell.xib */,
 				71752C3C25D20BE300B0A660 /* GroupTableViewCell.swift */,
@@ -191,6 +203,7 @@
 				71752C2F25D1F50200B0A660 /* FriendPhotosCollectionViewCell.xib in Resources */,
 				71752C4925D219E000B0A660 /* FriendTableViewCell.xib in Resources */,
 				71752C3F25D20BE300B0A660 /* GroupTableViewCell.xib in Resources */,
+				716F564425E01FEC00F6B598 /* NewsTableViewCell.xib in Resources */,
 				7124968025C4A3F60059FEE0 /* LaunchScreen.storyboard in Resources */,
 				7124967D25C4A3F60059FEE0 /* Assets.xcassets in Resources */,
 				7124967B25C4A3F30059FEE0 /* Main.storyboard in Resources */,
@@ -210,14 +223,17 @@
 				7124967825C4A3F30059FEE0 /* ViewController.swift in Sources */,
 				71752C3E25D20BE300B0A660 /* GroupTableViewCell.swift in Sources */,
 				71B9D69E25DB0B1300DD25D5 /* LikesControlButton.swift in Sources */,
+				716F564B25E069AF00F6B598 /* News.swift in Sources */,
 				71DF9D1625CC509500AFCD78 /* TableViewController2.swift in Sources */,
 				71D877AD25C9B210006064F8 /* TableViewController1.swift in Sources */,
+				716F564825E0612700F6B598 /* NewsTableViewController.swift in Sources */,
 				71752C4825D219E000B0A660 /* FriendTableViewCell.swift in Sources */,
 				7124967425C4A3F30059FEE0 /* AppDelegate.swift in Sources */,
 				71FA0A4225D9275600284131 /* AvatarView.swift in Sources */,
 				71752C2E25D1F50200B0A660 /* FriendPhotosCollectionViewCell.swift in Sources */,
 				7124967625C4A3F30059FEE0 /* SceneDelegate.swift in Sources */,
 				71B9D6A225DB385600DD25D5 /* LikesButtonViewController.swift in Sources */,
+				716F564325E01FEC00F6B598 /* NewsTableViewCell.swift in Sources */,
 				71752C1B25D1DB4300B0A660 /* Friend.swift in Sources */,
 				71752C3225D1F86E00B0A660 /* PhotosCollectionViewController.swift in Sources */,
 			);
