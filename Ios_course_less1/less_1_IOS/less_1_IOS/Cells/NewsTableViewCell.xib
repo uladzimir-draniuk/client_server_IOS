@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" restorationIdentifier="newsCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewsTableViewCell" rowHeight="336" id="KGk-i7-Jjw" customClass="NewsTableViewCell" customModule="less_1_IOS" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="newsCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" rowHeight="336" id="KGk-i7-Jjw" customClass="NewsTableViewCell" customModule="less_1_IOS" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="300" height="328"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -24,64 +24,64 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hY-Qs-HaQ">
-                        <rect key="frame" x="16" y="298" width="47" height="23"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hY-Qs-HaQ">
+                        <rect key="frame" x="16" y="299" width="37.5" height="23"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <state key="normal" title="10" image="heart" catalog="system">
                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <connections>
-                            <action selector="NewsLikeButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="GmZ-eE-6FY"/>
+                            <action selector="likesBtn_Click:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3d7-If-fvC"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKE-tF-Oxh">
-                        <rect key="frame" x="80" y="298" width="61" height="22"/>
-                        <state key="normal" title="Button" image="arrowshape.turn.up.right.fill" catalog="system"/>
-                        <connections>
-                            <action selector="NewsSendToButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kgg-J9-LA4"/>
-                        </connections>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKE-tF-Oxh">
+                        <rect key="frame" x="91" y="299" width="21" height="22"/>
+                        <state key="normal" image="arrowshape.turn.up.right.fill" catalog="system"/>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgD-Ab-rxe">
-                        <rect key="frame" x="144" y="298" width="59" height="22"/>
-                        <state key="normal" title="Button" image="text.bubble.fill" catalog="system"/>
-                        <connections>
-                            <action selector="NewsCommentsButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qK3-JK-glT"/>
-                        </connections>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgD-Ab-rxe">
+                        <rect key="frame" x="158" y="299" width="22.5" height="22"/>
+                        <state key="normal" image="text.bubble.fill" catalog="system"/>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4d-IE-TfT">
-                        <rect key="frame" x="208" y="299" width="66" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="usT-J4-YI1">
+                        <rect key="frame" x="0.0" y="38" width="300" height="253"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4d-IE-TfT">
+                        <rect key="frame" x="215" y="299" width="66" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <state key="normal" title="143K">
                             <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <imageReference key="image" image="eye.fill" catalog="system" symbolScale="default"/>
                         </state>
                     </button>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="usT-J4-YI1">
-                        <rect key="frame" x="0.0" y="38" width="300" height="250"/>
-                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="mgD-Ab-rxe" firstAttribute="leading" secondItem="bKE-tF-Oxh" secondAttribute="trailing" constant="16" id="4rc-LT-ngn"/>
-                    <constraint firstItem="bKE-tF-Oxh" firstAttribute="centerY" secondItem="1hY-Qs-HaQ" secondAttribute="centerY" id="CUn-PN-0xP"/>
+                    <constraint firstItem="mgD-Ab-rxe" firstAttribute="top" secondItem="usT-J4-YI1" secondAttribute="bottom" constant="8" id="DBu-yK-Not"/>
+                    <constraint firstAttribute="bottom" secondItem="bKE-tF-Oxh" secondAttribute="bottom" constant="7" id="Dbk-8t-Npz"/>
                     <constraint firstItem="xqg-wk-N1h" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="GIl-L9-Iju"/>
-                    <constraint firstAttribute="bottom" secondItem="1hY-Qs-HaQ" secondAttribute="bottom" constant="7" id="P8a-aX-Qg5"/>
+                    <constraint firstAttribute="bottom" secondItem="mgD-Ab-rxe" secondAttribute="bottom" constant="7" id="KXa-6X-0wb"/>
+                    <constraint firstItem="S4d-IE-TfT" firstAttribute="top" secondItem="usT-J4-YI1" secondAttribute="bottom" constant="8" id="NIR-OC-kdA"/>
+                    <constraint firstAttribute="bottom" secondItem="S4d-IE-TfT" secondAttribute="bottom" constant="7" id="OC7-Uy-Uam"/>
                     <constraint firstItem="xqg-wk-N1h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="PNr-Nl-VBy"/>
-                    <constraint firstItem="1hY-Qs-HaQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="SYf-Nz-gTT"/>
+                    <constraint firstItem="mgD-Ab-rxe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="158" id="Qzf-da-Vpf"/>
+                    <constraint firstItem="1hY-Qs-HaQ" firstAttribute="top" secondItem="usT-J4-YI1" secondAttribute="bottom" constant="8" id="TcE-cV-5wV"/>
+                    <constraint firstItem="bKE-tF-Oxh" firstAttribute="top" secondItem="usT-J4-YI1" secondAttribute="bottom" constant="8" id="Xu2-4R-uQT"/>
                     <constraint firstAttribute="trailing" secondItem="xqg-wk-N1h" secondAttribute="trailing" constant="10" id="bgd-o2-CB3"/>
-                    <constraint firstItem="mgD-Ab-rxe" firstAttribute="centerY" secondItem="bKE-tF-Oxh" secondAttribute="centerY" id="cZA-ja-IRI"/>
-                    <constraint firstAttribute="bottom" secondItem="usT-J4-YI1" secondAttribute="bottom" constant="40" id="fmf-TM-aIM"/>
+                    <constraint firstAttribute="bottom" secondItem="1hY-Qs-HaQ" secondAttribute="bottom" constant="6" id="daL-re-w7j"/>
+                    <constraint firstAttribute="trailing" secondItem="S4d-IE-TfT" secondAttribute="trailing" constant="19" id="fUj-XK-boC"/>
                     <constraint firstItem="usT-J4-YI1" firstAttribute="top" secondItem="xqg-wk-N1h" secondAttribute="bottom" constant="8" symbolic="YES" id="ivW-NM-TJG"/>
+                    <constraint firstItem="bKE-tF-Oxh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="91" id="je4-aN-xDj"/>
+                    <constraint firstItem="1hY-Qs-HaQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="k5p-Si-b0e"/>
                     <constraint firstItem="usT-J4-YI1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ont-ng-YOA"/>
                     <constraint firstAttribute="trailing" secondItem="usT-J4-YI1" secondAttribute="trailing" id="tV6-8L-PBS"/>
-                    <constraint firstItem="bKE-tF-Oxh" firstAttribute="leading" secondItem="1hY-Qs-HaQ" secondAttribute="trailing" constant="16" id="xAo-yC-7uC"/>
+                    <constraint firstAttribute="bottom" secondItem="usT-J4-YI1" secondAttribute="bottom" constant="37" id="tfP-4k-tYv"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="NewTitleLabel" destination="xqg-wk-N1h" id="flm-uE-kF2"/>
+                <outlet property="NewLikeButton" destination="1hY-Qs-HaQ" id="f2p-DJ-omm"/>
                 <outlet property="NewsImageView" destination="usT-J4-YI1" id="Kik-07-k6z"/>
-                <outlet property="NewsLikeButton" destination="1hY-Qs-HaQ" id="Elm-ql-PFG"/>
+                <outlet property="NewsTitleLabel" destination="xqg-wk-N1h" id="jLJ-D1-ydz"/>
+                <outlet property="cntViewsLbl" destination="S4d-IE-TfT" id="tgd-uC-wat"/>
             </connections>
             <point key="canvasLocation" x="-181.15942028985509" y="12.053571428571429"/>
         </tableViewCell>

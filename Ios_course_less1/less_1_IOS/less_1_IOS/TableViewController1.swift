@@ -29,6 +29,7 @@ class TableViewController1: UITableViewController {
         }
         return self.friends
     }
+    
     func getLabelForFriend(_ friends : [Friend]) -> [String] {
     
         for friend in friends {
@@ -58,12 +59,16 @@ class TableViewController1: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.rowHeight = UITableView.automaticDimension
+        
         self.navigationItem.title = "Friends"
+        
+        self.tableView.backgroundColor = UIColor.yellow
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Friends", style: .plain, target: self, action: nil)
         
         table_item1.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendCell")
         
+        self.filteredFriends = self.getSorted()
         self.friendForLabels = self.getFriendsForLable(self.friends,getLabelForFriend(self.friends))
         
         let searchBar = UISearchBar(
@@ -71,7 +76,7 @@ class TableViewController1: UITableViewController {
                 origin: .zero,
                 size:  CGSize(
                     width: UIScreen.main.bounds.width,
-                    height: 40
+                    height: 50
                     )
                 )
             )
@@ -93,9 +98,18 @@ class TableViewController1: UITableViewController {
         self.friendForLabels[section].removeAll()
         self.friendForLabels[section] = filteredFriends.filter {
             $0.surname.lowercased().hasPrefix(sectionLabels[section])
-            
         }
         return friendForLabels[section].count
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if section % 2 == 0 {
+            (view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.8)
+        } else {
+            (view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.8)
+        }
+        let header = view as! UITableViewHeaderFooterView
+            header.textLabel?.textColor = UIColor.red
     }
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -103,17 +117,52 @@ class TableViewController1: UITableViewController {
    
         cell.friendName.text = self.friendForLabels[indexPath.section][indexPath.row].surname + " " + self.friendForLabels[indexPath.section][indexPath.row].name
         cell.avatarView.imageView.image = UIImage(named: self.friendForLabels[indexPath.section][indexPath.row].avatarImage)
-       
+        
+        
+        if indexPath.section % 2 == 0
+        {
+            cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.8)
+        } else
+        {
+            cell.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.8)
+        }
+        
+
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+  
     var currIndex: IndexPath?
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.deselectRow(at: indexPath, animated: true)
-        self.currIndex = indexPath
-        self.performSegue(withIdentifier: "showCollection", sender: self)
+        let cell1 = tableView.cellForRow(at: indexPath) as! FriendTableViewCell
+        
+        if cell1.avatarView.imageView.isHighlighted {
+            cell1.avatarView.transform = CGAffineTransform(translationX: 0,
+                                                           y: -cell1.avatarView.bounds.height/4)
+            
+            UIView.animate(
+                withDuration: 0.6,
+                delay: 0,
+                usingSpringWithDamping: 0.5,
+                initialSpringVelocity: 0,
+                options: .curveEaseOut,
+                animations:
+                {
+                    cell1.avatarView.transform = .identity
+                },
+                completion:
+                    {_ in
+                        tableView.deselectRow(at: indexPath, animated: true)
+                        self.currIndex = indexPath
+                        self.performSegue(withIdentifier: "showCollection", sender: self)
+                    }
+            )
+        }
         
     }
     
@@ -152,5 +201,6 @@ extension TableViewController1 : UISearchBarDelegate {
             
         }
     }
+    
 }
 

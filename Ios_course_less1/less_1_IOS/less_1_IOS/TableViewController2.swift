@@ -48,4 +48,29 @@ class TableViewController2: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell1 = tableView.cellForRow(at: indexPath) as! GroupTableViewCell
+        
+        if cell1.groupImage.isHighlighted {
+            cell1.groupImage.transform = CGAffineTransform(translationX: -cell1.groupImage.bounds.height/4,
+                                                           y: 0)
+            
+            UIView.animate(
+                withDuration: 0.6,
+                delay: 0,
+                usingSpringWithDamping: 0.5,
+                initialSpringVelocity: 0,
+                options: .curveEaseOut,
+                animations:
+                {
+                    cell1.groupImage.transform = .identity
+                },
+                completion: nil
+            )
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
+
