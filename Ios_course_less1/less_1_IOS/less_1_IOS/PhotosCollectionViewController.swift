@@ -28,6 +28,7 @@ class PhotosCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         self.currIndex = indexPath
+//        collectionView.transform = CGAffineTransform (self.collectionView, 2, 0, 0)
         self.performSegue(withIdentifier: "showFriendImages", sender: self)
     }
     
