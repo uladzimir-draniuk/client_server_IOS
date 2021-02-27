@@ -13,21 +13,46 @@ class PhotosCollectionViewController: UICollectionViewController {
 
     private let reuseIdentifier = "PhotoCell"
     var data : Friend!
+    var currIndex: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-//        self.collectionView.addSubview(self.likeButton)
-        
         // Register cell classes
         self.collectionView.register(UINib(nibName: "FriendPhotosCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: self.reuseIdentifier)
 
         // Do any additional setup after loading the view.
         self.navigationItem.title = data.surname + " " + data.name
-        
     }
-
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        self.currIndex = indexPath
+        self.performSegue(withIdentifier: "showFriendImages", sender: self)
+    }
+    
+    /*
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         super.prepare(for: segue, sender: sender)
+         
+         guard let indexPath = self.currIndex, segue.identifier == "showCollection" else { return }
+         
+         let vc = segue.destination as? PhotosCollectionViewController
+         vc?.data = self.friendForLabels[indexPath.section][indexPath.row]
+     }
+     
+     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard let indexPath = self.currIndex , segue.identifier == "showFriendImages" else { return }
+        
+        let vc = segue.destination as? PhotoGalleryViewController
+        vc?.data = self.data
+        vc?.photoNum = indexPath.row
+    }
+    
     /*
     // MARK: - Navigation
 

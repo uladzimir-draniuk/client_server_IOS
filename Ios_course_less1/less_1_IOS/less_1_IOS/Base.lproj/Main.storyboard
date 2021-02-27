@@ -205,23 +205,31 @@
             </objects>
             <point key="canvasLocation" x="-1236" y="846"/>
         </scene>
-        <!--View Controller-->
+        <!--Photo Gallery View Controller-->
         <scene sceneID="MQO-DX-qTl">
             <objects>
-                <viewController id="yAc-tE-k8s" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoGalleryViewController" modalTransitionStyle="flipHorizontal" id="yAc-tE-k8s" customClass="PhotoGalleryViewController" customModule="less_1_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" ambiguous="YES" id="XB0-1q-dYd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c9o-Mi-XWk">
                                 <rect key="frame" x="59" y="203" width="300" height="482"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DfH-ci-bK0">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="482"/>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DfH-ci-bK0">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="500"/>
+                                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                        <color key="tintColor" systemColor="systemPinkColor"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="rrQ-bw-wZe" appends="YES" id="Cxs-J9-tDy"/>
+                                        </connections>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="8kH-hO-UeH"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="500" id="F5k-Ls-yuf"/>
                                     <constraint firstAttribute="bottom" secondItem="DfH-ci-bK0" secondAttribute="bottom" id="XzV-1v-bAL"/>
                                     <constraint firstItem="DfH-ci-bK0" firstAttribute="leading" secondItem="c9o-Mi-XWk" secondAttribute="leading" id="djB-Ub-VN0"/>
                                     <constraint firstItem="DfH-ci-bK0" firstAttribute="top" secondItem="c9o-Mi-XWk" secondAttribute="top" id="eQS-mr-o1d"/>
@@ -232,7 +240,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7Dy-2U-BoZ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray4Color"/>
                         <constraints>
                             <constraint firstItem="c9o-Mi-XWk" firstAttribute="leading" secondItem="7Dy-2U-BoZ" secondAttribute="leading" constant="59" id="93z-tI-7mA"/>
                             <constraint firstItem="7Dy-2U-BoZ" firstAttribute="trailing" secondItem="c9o-Mi-XWk" secondAttribute="trailing" constant="59" id="eVf-02-50F"/>
@@ -240,8 +248,17 @@
                             <constraint firstItem="c9o-Mi-XWk" firstAttribute="top" secondItem="7Dy-2U-BoZ" secondAttribute="top" constant="159" id="ycN-dI-99N"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="galleryImageView" destination="DfH-ci-bK0" id="zZC-MB-Qgb"/>
+                        <outlet property="photoView" destination="c9o-Mi-XWk" id="ju2-ph-drT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zkB-4D-Hri" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="rrQ-bw-wZe">
+                    <connections>
+                        <action selector="moveToNextItem:" destination="yAc-tE-k8s" id="bAh-ou-Cmo"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-2878.2608695652175" y="861.83035714285711"/>
         </scene>
@@ -269,6 +286,9 @@
                                 </collectionViewCellContentView>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <size key="customSize" width="150" height="150"/>
+                                <connections>
+                                    <segue destination="yAc-tE-k8s" kind="showDetail" identifier="showFriendImages" id="Loa-Vx-atd"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -512,6 +532,9 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

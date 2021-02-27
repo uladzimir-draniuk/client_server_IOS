@@ -29,6 +29,7 @@
 		71752C4825D219E000B0A660 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71752C4625D219E000B0A660 /* FriendTableViewCell.swift */; };
 		71752C4925D219E000B0A660 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71752C4725D219E000B0A660 /* FriendTableViewCell.xib */; };
 		71A7EDC325E436AE0067F270 /* LoadingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A7EDC225E436AE0067F270 /* LoadingBar.swift */; };
+		71B119EC25E831F100BBD112 /* PhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B119EB25E831F100BBD112 /* PhotoGalleryViewController.swift */; };
 		71B9D69E25DB0B1300DD25D5 /* LikesControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B9D69D25DB0B1300DD25D5 /* LikesControlButton.swift */; };
 		71B9D6A225DB385600DD25D5 /* LikesButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B9D6A125DB385600DD25D5 /* LikesButtonViewController.swift */; };
 		71D877AD25C9B210006064F8 /* TableViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D877AC25C9B210006064F8 /* TableViewController1.swift */; };
@@ -61,6 +62,7 @@
 		71752C4625D219E000B0A660 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		71752C4725D219E000B0A660 /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
 		71A7EDC225E436AE0067F270 /* LoadingBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingBar.swift; sourceTree = "<group>"; };
+		71B119EB25E831F100BBD112 /* PhotoGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewController.swift; sourceTree = "<group>"; };
 		71B9D69D25DB0B1300DD25D5 /* LikesControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesControlButton.swift; sourceTree = "<group>"; };
 		71B9D6A125DB385600DD25D5 /* LikesButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesButtonViewController.swift; sourceTree = "<group>"; };
 		71D877AC25C9B210006064F8 /* TableViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController1.swift; sourceTree = "<group>"; };
@@ -112,10 +114,11 @@
 				71B9D6A125DB385600DD25D5 /* LikesButtonViewController.swift */,
 				71B9D69D25DB0B1300DD25D5 /* LikesControlButton.swift */,
 				71D877AC25C9B210006064F8 /* TableViewController1.swift */,
+				71752C3125D1F86E00B0A660 /* PhotosCollectionViewController.swift */,
+				71B119EB25E831F100BBD112 /* PhotoGalleryViewController.swift */,
 				71DF9D1525CC509500AFCD78 /* TableViewController2.swift */,
 				71752C4125D2101E00B0A660 /* TableViewController3.swift */,
 				716F564725E0612700F6B598 /* NewsTableViewController.swift */,
-				71752C3125D1F86E00B0A660 /* PhotosCollectionViewController.swift */,
 				71FA0A4125D9275600284131 /* AvatarView.swift */,
 			);
 			path = less_1_IOS;
@@ -239,6 +242,7 @@
 				71B9D6A225DB385600DD25D5 /* LikesButtonViewController.swift in Sources */,
 				716F564325E01FEC00F6B598 /* NewsTableViewCell.swift in Sources */,
 				71752C1B25D1DB4300B0A660 /* Friend.swift in Sources */,
+				71B119EC25E831F100BBD112 /* PhotoGalleryViewController.swift in Sources */,
 				71752C3225D1F86E00B0A660 /* PhotosCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
