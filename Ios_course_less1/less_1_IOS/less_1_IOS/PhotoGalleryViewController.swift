@@ -86,9 +86,10 @@ class PhotoGalleryViewController: UIViewController{
                 //                self.photoNum -= 1
                 
                 let animation = CABasicAnimation(keyPath: "position.x")
-                animation.fromValue = self.galleryImageView.layer.bounds.origin.x
-                animation.toValue = self.galleryImageView.layer.bounds.origin.x - 15
-                animation.duration = 0.4
+                animation.fromValue = self.galleryImageView.layer.position.x
+                animation.toValue = self.galleryImageView.layer.position.x + 20
+                animation.duration = 3
+                animation.fillMode = .backwards
                 self.galleryImageView.layer.add(animation, forKey: nil)
                 
                 UIView.animate(
