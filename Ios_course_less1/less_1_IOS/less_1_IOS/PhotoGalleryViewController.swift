@@ -11,7 +11,6 @@ class PhotoGalleryViewController: UIViewController{
     
     var data : Friend!
     var photoNum : Int!
-    let newView = UIImageView()
     
     //    let recognizer = UIPanGestureRecognizer(target: self, action: #selector(onPan(_:)))
     
@@ -33,96 +32,69 @@ class PhotoGalleryViewController: UIViewController{
         self.galleryImageView.addGestureRecognizer(leftSwipe)
         self.galleryImageView.addGestureRecognizer(rightSwipe)
         
-        self.photoView.addSubview(self.newView)
-        
     }
     
     @IBAction func moveToNextItem(_ sender:UISwipeGestureRecognizer) {
         
+        let newImage = UIImageView()
         switch sender.direction{
+        //left swipe action
         case .left:
             print("left")
-            if photoNum + 1 < self.data.photos.count
-            {
-                self.photoNum += 1
-                UIView.animate(
-                    withDuration: 1,
-                    animations:
-                        {
-                            self.galleryImageView.image = UIImage(named: self.data.photos[self.photoNum])
-                        },
+            let newIndex = self.photoNum + 1
+            let isNewImageL = newIndex < self.data.photos.count
+            
+            UIView.animate(
+                    withDuration: 0.4,
+                    animations: { self.photoView.frame.origin.x -= 40 },
                     completion:
                         {_ in
-                            print("animation is done!!!")
+                            self.photoView.center.x += 40
+                            if isNewImageL
+                            {
+                                newImage.removeFromSuperview()
+                                UIView.animate(
+                                withDuration: 0.6,
+                                animations:
+                                    {
+                                        self.galleryImageView.image = UIImage(named: self.data.photos[newIndex])
+                                        self.photoNum = newIndex
+                                        print("animation is done,!!!")
+                                    }
+                                )
+                            }
                         }
                 )
-                //                self.photoNum += 1
-                //                self.newView.frame = self.ÍgalleryImageView.frame
-                //                self.newView.image = UIImage(named: self.data.photos[self.photoNum])
-                //
-                //                UIView.transition(
-                //                    from: self.galleryImageView,
-                //                    to: newView,
-                //                    duration: 1,
-                //                    options: .transitionCrossDissolve
-                //                )
-            }
             
-        //left swipe action
+        //right swipe action
         case .right:
             print("right")
-            if self.photoNum - 1 >= 0 && self.photoNum - 1 < self.data.photos.count
-            {
-                self.photoNum -= 1
-                //                                self.newView.frame = self.galleryImageView.frame
-                //                                self.newView.image = UIImage(named: self.data.photos[self.photoNum])
-                //
-                //                UIView.transition(
-                //                    from: self.galleryImageView,
-                //                    to: self.newView,
-                //                    duration: 1,
-                //                    options: .transitionCrossDissolve
-                //                )
-                //                self.photoNum -= 1
-                
-                let animation = CABasicAnimation(keyPath: "position.x")
-                animation.fromValue = self.galleryImageView.layer.position.x
-                animation.toValue = self.galleryImageView.layer.position.x + 20
-                animation.duration = 3
-                animation.fillMode = .backwards
-                self.galleryImageView.layer.add(animation, forKey: nil)
-                
-                UIView.animate(
-                    withDuration: 0.6,
-                    animations:
+            let newIndex = self.photoNum - 1
+            let isNewImageR = newIndex >= 0 && newIndex < self.data.photos.count
+            
+            UIView.animate(
+                withDuration: 0.4,
+                animations: { self.galleryImageView.frame.origin.x += 40 },
+                completion:
+                    {_ in
+                        self.galleryImageView.center.x -= 40
+                        if isNewImageR
                         {
-                            self.galleryImageView.image = UIImage(named: self.data.photos[self.photoNum])
-                        },
-                    completion:
-                        {_ in
-                            //                            UIView.transition(
-                            //                                                from: self.galleryImageView,
-                            //                                                to: self.newView,
-                            //                                                duration: 1,
-                            //                                                options: .transitionCrossDissolve)
-                            //                            UIView.animate(
-                            //                                withDuration: 0.5,
-                            //                                animations:
-                            //                                    {
-                            //
-                            //                                        self.galleryImageView.image = UIImage(named: self.data.photos[self.photoNum])
-                            //                                    },
-                            //                                completion:
-                            //                                    {_ in
-                            print("animation is done,!!!")
-                        })
-            }
-//            )
-//        }
-        //right swipe action
+                            UIView.animate(
+                                withDuration: 0.6,
+                                animations:
+                                    {
+                                        self.galleryImageView.image = UIImage(named: self.data.photos[newIndex])
+                                        print("animation is done,!!!")
+                                        self.photoNum = newIndex
+                                    }
+                            )
+                        }
+                    }
+            )
+            
         default: //default
-        print("-")
+            print("-")
+        }
     }
-    
-}
 }
