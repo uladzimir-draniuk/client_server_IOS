@@ -21,6 +21,10 @@ class TableViewController1: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.rowHeight = UITableView.automaticDimension
+        self.navigationItem.title = "Friends"
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Friends", style: .plain, target: self, action: nil)
+        
         table_item1.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendCell")
   }
 
@@ -39,10 +43,12 @@ class TableViewController1: UITableViewController {
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendTableViewCell
-        
-        cell.friendImageView.image = UIImage(named: self.friends[indexPath.row].avatarImage)
-
+   
         cell.friendName.text = self.friends[indexPath.row].name + " " + self.friends[indexPath.row].surname
+        
+        cell.avatarView.imageView.image = UIImage(named: self.friends[indexPath.row].avatarImage)
+
+
         
         // Configure the cell...
 
