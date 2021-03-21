@@ -9,7 +9,7 @@ import UIKit
 
 class NewsViewController: UITableViewController {
     
-    
+
     private var news = [
         News(id: 1, title: "First news is", cntLikes: 112, photo: "news1"),
         News(id: 2, title: "Second news is", cntLikes: 123453, photo: "news2")
