@@ -118,7 +118,6 @@ class TableViewController1: UITableViewController {
         cell.friendName.text = self.friendForLabels[indexPath.section][indexPath.row].surname + " " + self.friendForLabels[indexPath.section][indexPath.row].name
         cell.avatarView.imageView.image = UIImage(named: self.friendForLabels[indexPath.section][indexPath.row].avatarImage)
         
-        
         if indexPath.section % 2 == 0
         {
             cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.8)
