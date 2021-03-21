@@ -29,15 +29,7 @@ class ViewController1: UIViewController {
             self.resultText.text = "Неверное имя или пароль"
         }
     }
-    
-//    let gradient = GradientView()
-//
-//
-    //add to your collectionView
-//    collectionView?.addSubview(gradient)
-//    collectionView?.sendSubview(toBack: gradient)
-//    self.collectionView?.backgroundView = gradient
-   
+
     private let color1 = UIColor.blue.cgColor
     private let color2 = UIColor.green.cgColor
     private let color3 = UIColor.blue.cgColor
@@ -54,16 +46,4 @@ class ViewController1: UIViewController {
         self.loginView.layer.insertSublayer(self.gradient, at: 0)
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
