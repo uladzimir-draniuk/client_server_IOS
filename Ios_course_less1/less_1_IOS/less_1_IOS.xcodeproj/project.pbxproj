@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7107F75D261086780083EE0A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107F75C261086780083EE0A /* Session.swift */; };
 		7124967425C4A3F30059FEE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7124967325C4A3F30059FEE0 /* AppDelegate.swift */; };
 		7124967625C4A3F30059FEE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7124967525C4A3F30059FEE0 /* SceneDelegate.swift */; };
 		7124967825C4A3F30059FEE0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7124967725C4A3F30059FEE0 /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7107F75C261086780083EE0A /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		7124967025C4A3F30059FEE0 /* less_1_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = less_1_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7124967325C4A3F30059FEE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7124967525C4A3F30059FEE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				71752C1A25D1DB4300B0A660 /* Friend.swift */,
 				716F564A25E069AF00F6B598 /* News.swift */,
 				71752C1E25D1DBCD00B0A660 /* Group.swift */,
+				7107F75C261086780083EE0A /* Session.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				7124967625C4A3F30059FEE0 /* SceneDelegate.swift in Sources */,
 				71B9D6A225DB385600DD25D5 /* LikesButtonViewController.swift in Sources */,
 				716F564325E01FEC00F6B598 /* NewsTableViewCell.swift in Sources */,
+				7107F75D261086780083EE0A /* Session.swift in Sources */,
 				71752C1B25D1DB4300B0A660 /* Friend.swift in Sources */,
 				71B119EC25E831F100BBD112 /* PhotoGalleryViewController.swift in Sources */,
 				71752C3225D1F86E00B0A660 /* PhotosCollectionViewController.swift in Sources */,
