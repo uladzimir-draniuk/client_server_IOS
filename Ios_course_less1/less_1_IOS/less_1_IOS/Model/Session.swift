@@ -8,8 +8,8 @@
 import Foundation
 
 class Session {
-    var token : String = "token"
-    var iserId : Int = 1
+    var token : String = ""
+    var userId : String = ""
     
     private init() { }
     

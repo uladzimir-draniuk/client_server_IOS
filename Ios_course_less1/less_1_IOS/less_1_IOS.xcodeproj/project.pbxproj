@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,6 +35,14 @@
 		71B9D6A225DB385600DD25D5 /* LikesButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B9D6A125DB385600DD25D5 /* LikesButtonViewController.swift */; };
 		71D877AD25C9B210006064F8 /* TableViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D877AC25C9B210006064F8 /* TableViewController1.swift */; };
 		71DF9D1625CC509500AFCD78 /* TableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF9D1525CC509500AFCD78 /* TableViewController2.swift */; };
+		71F40477262CD77300C54765 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 71F40476262CD77300C54765 /* SwiftyJSON */; };
+		71F4047B262CD7DA00C54765 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 71F4047A262CD7DA00C54765 /* Kingfisher */; };
+		71F4047E262CD85600C54765 /* VKLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F4047D262CD85600C54765 /* VKLoginViewController.swift */; };
+		71F40481262CDA5D00C54765 /* VKFriendTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F40480262CDA5D00C54765 /* VKFriendTableViewController.swift */; };
+		71F40484262CDAE800C54765 /* VKServiceFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F40483262CDAE800C54765 /* VKServiceFunc.swift */; };
+		71F40488262CDB6200C54765 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 71F40487262CDB6200C54765 /* Alamofire */; };
+		71F4048B262CDC5300C54765 /* VKFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F4048A262CDC5300C54765 /* VKFriend.swift */; };
+		71F4048E262CDE4400C54765 /* VKFriendPhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F4048D262CDE4400C54765 /* VKFriendPhotosCollectionViewController.swift */; };
 		71FA0A4225D9275600284131 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA0A4125D9275600284131 /* AvatarView.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +77,11 @@
 		71B9D6A125DB385600DD25D5 /* LikesButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesButtonViewController.swift; sourceTree = "<group>"; };
 		71D877AC25C9B210006064F8 /* TableViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController1.swift; sourceTree = "<group>"; };
 		71DF9D1525CC509500AFCD78 /* TableViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController2.swift; sourceTree = "<group>"; };
+		71F4047D262CD85600C54765 /* VKLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginViewController.swift; sourceTree = "<group>"; };
+		71F40480262CDA5D00C54765 /* VKFriendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKFriendTableViewController.swift; sourceTree = "<group>"; };
+		71F40483262CDAE800C54765 /* VKServiceFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKServiceFunc.swift; sourceTree = "<group>"; };
+		71F4048A262CDC5300C54765 /* VKFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKFriend.swift; sourceTree = "<group>"; };
+		71F4048D262CDE4400C54765 /* VKFriendPhotosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKFriendPhotosCollectionViewController.swift; sourceTree = "<group>"; };
 		71FA0A4125D9275600284131 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +90,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71F40488262CDB6200C54765 /* Alamofire in Frameworks */,
+				71F4047B262CD7DA00C54765 /* Kingfisher in Frameworks */,
+				71F40477262CD77300C54765 /* SwiftyJSON in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +128,10 @@
 				7124967E25C4A3F60059FEE0 /* LaunchScreen.storyboard */,
 				7124968125C4A3F60059FEE0 /* Info.plist */,
 				71F40472262CD6C000C54765 /* Old_logic */,
+				71F4047D262CD85600C54765 /* VKLoginViewController.swift */,
+				71F40480262CDA5D00C54765 /* VKFriendTableViewController.swift */,
+				71F40483262CDAE800C54765 /* VKServiceFunc.swift */,
+				71F4048D262CDE4400C54765 /* VKFriendPhotosCollectionViewController.swift */,
 			);
 			path = less_1_IOS;
 			sourceTree = "<group>";
@@ -121,6 +141,7 @@
 			children = (
 				71F40473262CD6E300C54765 /* Old_Model */,
 				7107F75C261086780083EE0A /* Session.swift */,
+				71F4048A262CDC5300C54765 /* VKFriend.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -184,6 +205,11 @@
 			dependencies = (
 			);
 			name = less_1_IOS;
+			packageProductDependencies = (
+				71F40476262CD77300C54765 /* SwiftyJSON */,
+				71F4047A262CD7DA00C54765 /* Kingfisher */,
+				71F40487262CDB6200C54765 /* Alamofire */,
+			);
 			productName = less_1_IOS;
 			productReference = 7124967025C4A3F30059FEE0 /* less_1_IOS.app */;
 			productType = "com.apple.product-type.application";
@@ -211,6 +237,11 @@
 				Base,
 			);
 			mainGroup = 7124966725C4A3F30059FEE0;
+			packageReferences = (
+				71F40475262CD77300C54765 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				71F40479262CD7DA00C54765 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				71F40486262CDB6200C54765 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 7124967125C4A3F30059FEE0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -242,8 +273,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71F4048B262CDC5300C54765 /* VKFriend.swift in Sources */,
 				71752C4225D2101E00B0A660 /* TableViewController3.swift in Sources */,
 				71752C1F25D1DBCD00B0A660 /* Group.swift in Sources */,
+				71F4047E262CD85600C54765 /* VKLoginViewController.swift in Sources */,
 				71A7EDC325E436AE0067F270 /* LoadingBar.swift in Sources */,
 				7124968B25C4BE6F0059FEE0 /* ViewController1.swift in Sources */,
 				7124967825C4A3F30059FEE0 /* ViewController.swift in Sources */,
@@ -256,11 +289,14 @@
 				71752C4825D219E000B0A660 /* FriendTableViewCell.swift in Sources */,
 				7124967425C4A3F30059FEE0 /* AppDelegate.swift in Sources */,
 				71FA0A4225D9275600284131 /* AvatarView.swift in Sources */,
+				71F4048E262CDE4400C54765 /* VKFriendPhotosCollectionViewController.swift in Sources */,
 				71752C2E25D1F50200B0A660 /* FriendPhotosCollectionViewCell.swift in Sources */,
 				7124967625C4A3F30059FEE0 /* SceneDelegate.swift in Sources */,
 				71B9D6A225DB385600DD25D5 /* LikesButtonViewController.swift in Sources */,
 				716F564325E01FEC00F6B598 /* NewsTableViewCell.swift in Sources */,
 				7107F75D261086780083EE0A /* Session.swift in Sources */,
+				71F40484262CDAE800C54765 /* VKServiceFunc.swift in Sources */,
+				71F40481262CDA5D00C54765 /* VKFriendTableViewController.swift in Sources */,
 				71752C1B25D1DB4300B0A660 /* Friend.swift in Sources */,
 				71B119EC25E831F100BBD112 /* PhotoGalleryViewController.swift in Sources */,
 				71752C3225D1F86E00B0A660 /* PhotosCollectionViewController.swift in Sources */,
@@ -465,6 +501,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		71F40475262CD77300C54765 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+		71F40479262CD7DA00C54765 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.2.1;
+			};
+		};
+		71F40486262CDB6200C54765 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		71F40476262CD77300C54765 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71F40475262CD77300C54765 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		71F4047A262CD7DA00C54765 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71F40479262CD7DA00C54765 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		71F40487262CDB6200C54765 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71F40486262CDB6200C54765 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7124966825C4A3F30059FEE0 /* Project object */;
 }
