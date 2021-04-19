@@ -69,6 +69,7 @@ class VKServiceFunc {
                 //                    "id" : 6949,
                 let friendsJSONArray = JSON(json)["response"]["items"].arrayValue
                 let friends = friendsJSONArray.map(VKFriend.init)
+                print("first friend \(friends[0])")
                 completionHandler(.success(friends))
             }
         }

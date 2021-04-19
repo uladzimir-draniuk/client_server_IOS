@@ -20,10 +20,15 @@ class VKFriendTableViewController: UITableViewController {
     
     @IBOutlet var table_item1: UITableView!
     
-    func getSorted() -> [VKFriend] {
+    func getSorted(inOut: [VKFriend] ) -> [VKFriend] {
         
-        self.friends = self.friends.sorted { friend1, friend2 in
+        self.friends = inOut.sorted { friend1, friend2 in
+//            if let lastName1 = friend1.lastName.first,
+//               let lastName2 = friend2.lastName.first {
+//                lastName1 < lastName2
+//        } else {
             friend1.lastName.first! < friend2.lastName.first!
+//        }}
         }
         return self.friends
     }
@@ -66,9 +71,7 @@ class VKFriendTableViewController: UITableViewController {
         
         table_item1.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "FriendCell")
         
-        self.filteredFriends = self.getSorted()
-        self.friendForLabels = self.getFriendsForLable(self.friends,getLabelForFriend(self.friends))
-        
+       
         let searchBar = UISearchBar(
             frame: CGRect(
                 origin: .zero,
@@ -82,35 +85,53 @@ class VKFriendTableViewController: UITableViewController {
         self.table_item1.keyboardDismissMode = .onDrag
         searchBar.delegate = self
         self.table_item1.tableHeaderView = searchBar
-        self.filteredFriends = friends
+        
   }
     // MARK: - Table view data source
 
     override func viewWillAppear(_ animated: Bool) {
-        netSession.loadFriends(completionHandler: { [weak self] result in
+        netSession.loadFriends(completionHandler: { result in
             switch result {
             case let .failure(error):
                 print(error)
             case let .success(friends):
-                self?.friends = friends
-                self?.table_item1.reloadData()
+                self.friends = friends
+                if self.friends.count > 0 {
+                    self.filteredFriends = self.getSorted(inOut: self.friends)
+                    self.friendForLabels = self.getFriendsForLable(self.friends,self.getLabelForFriend(self.friends))
+                }
+                self.table_item1.reloadData()
+                self.filteredFriends = friends
             }
         })
-        netSession.loadPics(token: Session.shared.token)
+ //       netSession.loadPics(token: Session.shared.token)
+        
+        
+        
+//        self.filteredFriends = friends
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return sectionLabels.count
+        if sectionLabels.count > 0 {
+            return sectionLabels.count
+        }
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        self.friendForLabels[section].removeAll()
-        self.friendForLabels[section] = filteredFriends.filter {
-            $0.lastName.lowercased().hasPrefix(sectionLabels[section])
+        if friendForLabels.count > 0
+        {
+            self.friendForLabels[section].removeAll()
+            self.friendForLabels[section] = filteredFriends.filter {
+                $0.lastName.lowercased().hasPrefix(sectionLabels[section])
+            }
+            return friendForLabels[section].count
+            
+        } else {
+            return 1
         }
-        return friendForLabels[section].count
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -124,20 +145,29 @@ class VKFriendTableViewController: UITableViewController {
     }
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendTableViewCell
-   
-        cell.friendName.text = self.friendForLabels[indexPath.section][indexPath.row].lastName + " " + self.friendForLabels[indexPath.section][indexPath.row].firstName
-        cell.avatarView.imageView.kf.setImage(with: self.friendForLabels[indexPath.section][indexPath.row].photoUrl)
         
-        if indexPath.section % 2 == 0
-        {
-            cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.8)
-        } else
-        {
-            cell.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.8)
+        if self.friendForLabels.count > 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendTableViewCell
+            
+            
+            cell.friendName.text = self.friendForLabels[indexPath.section][indexPath.row].lastName + " " + self.friendForLabels[indexPath.section][indexPath.row].firstName
+            cell.avatarView.imageView.kf.setImage(with: self.friendForLabels[indexPath.section][indexPath.row].photoUrl)
+            
+            if indexPath.section % 2 == 0
+            {
+                cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.8)
+            } else
+            {
+                cell.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.8)
+            }
+            return cell
+            
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath)
+            return cell
         }
         
-        return cell
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -185,7 +215,10 @@ class VKFriendTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionLabels[section].uppercased()
+        if sectionLabels.count > 0 {
+            return sectionLabels[section].uppercased()
+        }
+        return "1"
     }
 }
 
@@ -205,7 +238,7 @@ extension VKFriendTableViewController : UISearchBarDelegate {
             self.filteredFriends = self.friends.filter {
                 $0.lastName.lowercased().contains(searchText.lowercased())
             }
-            self.friendForLabels = self.getFriendsForLable(self.filteredFriends,getLabelForFriend(self.filteredFriends))
+            self.friendForLabels = self.getFriendsForLable(self.filteredFriends, getLabelForFriend(self.filteredFriends))
             self.table_item1.reloadData()
             
         }

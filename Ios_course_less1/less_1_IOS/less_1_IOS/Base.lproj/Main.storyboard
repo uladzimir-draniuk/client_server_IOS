@@ -387,10 +387,10 @@
             </objects>
             <point key="canvasLocation" x="-1165" y="171"/>
         </scene>
-        <!--Table View Controller1-->
+        <!--Friend Table View Controller-->
         <scene sceneID="63J-sT-HK9">
             <objects>
-                <tableViewController id="MRk-CQ-B4J" customClass="TableViewController1" customModule="less_1_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="MRk-CQ-B4J" customClass="VKFriendTableViewController" customModule="less_1_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Xyw-U2-wju">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
