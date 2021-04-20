@@ -23,12 +23,7 @@ class VKFriendTableViewController: UITableViewController {
     func getSorted(inOut: [VKFriend] ) -> [VKFriend] {
         
         self.friends = inOut.sorted { friend1, friend2 in
-//            if let lastName1 = friend1.lastName.first,
-//               let lastName2 = friend2.lastName.first {
-//                lastName1 < lastName2
-//        } else {
             friend1.lastName.first! < friend2.lastName.first!
-//        }}
         }
         return self.friends
     }
@@ -99,12 +94,13 @@ class VKFriendTableViewController: UITableViewController {
                 if self.friends.count > 0 {
                     self.filteredFriends = self.getSorted(inOut: self.friends)
                     self.friendForLabels = self.getFriendsForLable(self.friends,self.getLabelForFriend(self.friends))
+                    
                 }
                 self.table_item1.reloadData()
                 self.filteredFriends = friends
             }
         })
- //       netSession.loadPics(token: Session.shared.token)
+        
         
         
         
@@ -212,6 +208,17 @@ class VKFriendTableViewController: UITableViewController {
         
         let vc = segue.destination as? VKFriendPhotosCollectionViewController
         vc?.data = self.friendForLabels[indexPath.section][indexPath.row]
+        netSession.loadPics(owner: (vc?.data.id)!, completionHandler: { result in
+            switch result {
+            case let .failure(error):
+                print(error)
+            case let .success(photos):
+                vc?.photos = photos
+            }
+            
+        }
+        )
+        
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

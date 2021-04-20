@@ -29,6 +29,7 @@
 		71752C4225D2101E00B0A660 /* TableViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71752C4125D2101E00B0A660 /* TableViewController3.swift */; };
 		71752C4825D219E000B0A660 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71752C4625D219E000B0A660 /* FriendTableViewCell.swift */; };
 		71752C4925D219E000B0A660 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71752C4725D219E000B0A660 /* FriendTableViewCell.xib */; };
+		718D5BF1262E286500989585 /* VKPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D5BF0262E286400989585 /* VKPhoto.swift */; };
 		71A7EDC325E436AE0067F270 /* LoadingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A7EDC225E436AE0067F270 /* LoadingBar.swift */; };
 		71B119EC25E831F100BBD112 /* PhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B119EB25E831F100BBD112 /* PhotoGalleryViewController.swift */; };
 		71B9D69E25DB0B1300DD25D5 /* LikesControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B9D69D25DB0B1300DD25D5 /* LikesControlButton.swift */; };
@@ -71,6 +72,7 @@
 		71752C4125D2101E00B0A660 /* TableViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController3.swift; sourceTree = "<group>"; };
 		71752C4625D219E000B0A660 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		71752C4725D219E000B0A660 /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
+		718D5BF0262E286400989585 /* VKPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKPhoto.swift; sourceTree = "<group>"; };
 		71A7EDC225E436AE0067F270 /* LoadingBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingBar.swift; sourceTree = "<group>"; };
 		71B119EB25E831F100BBD112 /* PhotoGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewController.swift; sourceTree = "<group>"; };
 		71B9D69D25DB0B1300DD25D5 /* LikesControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesControlButton.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				71F40473262CD6E300C54765 /* Old_Model */,
 				7107F75C261086780083EE0A /* Session.swift */,
 				71F4048A262CDC5300C54765 /* VKFriend.swift */,
+				718D5BF0262E286400989585 /* VKPhoto.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				716F564325E01FEC00F6B598 /* NewsTableViewCell.swift in Sources */,
 				7107F75D261086780083EE0A /* Session.swift in Sources */,
 				71F40484262CDAE800C54765 /* VKServiceFunc.swift in Sources */,
+				718D5BF1262E286500989585 /* VKPhoto.swift in Sources */,
 				71F40481262CDA5D00C54765 /* VKFriendTableViewController.swift in Sources */,
 				71752C1B25D1DB4300B0A660 /* Friend.swift in Sources */,
 				71B119EC25E831F100BBD112 /* PhotoGalleryViewController.swift in Sources */,

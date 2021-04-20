@@ -98,16 +98,49 @@ class VKServiceFunc {
 //        }
 //   }
 //
-    func loadPics(token: String) {
+    func loadPics(owner: Int, completionHandler: @escaping ((Result<[VKPhoto], Error>) -> Void)) {
         //photos.getUserPhotos
-        let path = "/method/photos.getUserPhotos"
+        let path = "/method/photos.get"
+        var photoParams = baseParams
+        photoParams["extended"] = 0
+        photoParams["owner_id"] = owner
+        photoParams["album_id"] = "wall"
+        photoParams["photo_sizes"] = 1
         
-        AF.request(baseVkUrl + path, method: .get, parameters: baseParams).responseJSON { response in
-            guard let json = response.value else { return }
-            
-            print("jsonPics \(json)")
+        
+        AF.request(baseVkUrl + path, method: .get, parameters: photoParams).responseJSON { response in
+            switch response.result {
+            case let .failure(error):
+                //completionHandler(.failure(error))
+                print("error = \(error)")
+            case let .success(json):
+                let count = JSON(json)["count"].intValue
+                let photosJSONArray = JSON(json)["response"]["items"].arrayValue
+                let photosFriend = photosJSONArray.map(VKPhoto.init)
+                
+                for index in 0..<count {
+                    let photoSizeJSONArray = JSON(json)["response"]["items"][index]["sizes"].arrayValue
+                    let photoSizeArray = photoSizeJSONArray.map(VKPhotoSizes.init)
+                    photosFriend[index].photos = photoSizeArray
+                }
+                print("photo 2 is \(photosFriend[2])")
+                completionHandler(.success(photosFriend))
+            }
         }
     }
 }
-
-
+//json = {
+//    response =     {
+//        count = 49;
+//        items =         (
+//                        {
+//                "album_id" = "-7";
+//                date = 1424187446;
+//                "has_tags" = 0;
+//                id = 354580807;
+//                "owner_id" = 136709529;
+//                sizes =                 (
+//                                        {
+//                        height = 97;
+//                        type = m;
+//                        url =

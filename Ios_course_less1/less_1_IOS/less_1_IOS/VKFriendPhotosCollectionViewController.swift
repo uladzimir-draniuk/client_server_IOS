@@ -6,14 +6,18 @@
 //
 
 import UIKit
+import Kingfisher
 
 private let reuseIdentifier = "Cell"
 
 class VKFriendPhotosCollectionViewController: UICollectionViewController {
 
+    private var netSession = VKServiceFunc.init(token: Session.shared.token)
+    
     private let reuseIdentifier = "PhotoCell"
     var data : VKFriend!
     var currIndex: IndexPath?
+    var photos : [VKPhoto]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +27,16 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
 
         // Do any additional setup after loading the view.
         self.navigationItem.title = data.lastName + " " + data.firstName
+        
+        netSession.loadPics(owner: data.id, completionHandler: { result in
+            switch result {
+            case let .failure(error):
+                print(error)
+            case let .success(photos):
+                self.photos = photos
+            }
+        })
+ 
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -71,21 +85,55 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return self.data.photos.count
-        return 1
+        if let count = self.photos?.count {
+            return count
+        } else {
+            return 1
+        }
+        
     }
 
     
-//    let likeButton = LikesButton()
+ //  let likeButton = LikesButton()
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FriendPhotosCollectionViewCell
-//        if indexPath.item < self.data.photos.count {
-//            cell.photoFriend.image = UIImage(named: self.data.photos[indexPath.item])
-//            cell.likeButton = LikesButton.init(frame: CGRect(x: 80, y: 160, width: 20, height: 15))   // не хочет инициализороваться кнопка в ячейке
-//        }
+        if let count = self.photos?.count {
+            if indexPath.item < count {
+                if let photoMUrl = getMSizePhotoUrl(index: indexPath.row) {
+                    cell.photoFriend.kf.setImage(with: photoMUrl)
+                } else {
+                    cell.photoFriend.kf.setImage(with: self.data.photoUrl)
+                }
+            }
+        }
+        
         return cell
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        netSession.loadPics(owner: data.id, completionHandler: { result in
+//            switch result {
+//            case let .failure(error):
+//                print(error)
+//            case let .success(photos):
+//                self.photos = photos
+//            }
+//        })
+//    }
+    
+    func getMSizePhotoUrl (index: Int) -> URL? {
+        if let photo = self.photos?[index] {
+            for size in photo.photos {
+                if size.type == "m" {
+                    return size.photoUrl
+                }
+            }
+        }
+        return .none
+        }
+   // for i in vehicleList?._embedded.userVehicles ?? [] { }
+    
     
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)

@@ -304,10 +304,10 @@
             </objects>
             <point key="canvasLocation" x="-2878.2608695652175" y="861.83035714285711"/>
         </scene>
-        <!--Photos Collection View Controller-->
+        <!--Friend Photos Collection View Controller-->
         <scene sceneID="eE5-Rc-gYu">
             <objects>
-                <collectionViewController id="jB2-nV-weo" customClass="PhotosCollectionViewController" customModule="less_1_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="jB2-nV-weo" customClass="VKFriendPhotosCollectionViewController" customModule="less_1_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="G9y-b6-PaO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
