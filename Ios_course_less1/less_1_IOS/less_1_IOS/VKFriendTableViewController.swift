@@ -11,6 +11,7 @@ class VKFriendTableViewController: UITableViewController {
 
     
     private var friends = [VKFriend]()
+    private var photos = [VKPhoto]()
     
     private var netSession = VKServiceFunc.init(token: Session.shared.token)
     
@@ -29,7 +30,8 @@ class VKFriendTableViewController: UITableViewController {
     }
     
     func getLabelForFriend(_ friends : [VKFriend]) -> [String] {
-    
+        
+        self.sectionLabels.removeAll()
         for friend in friends {
             let firstChar = String(friend.lastName.lowercased().first!)
             if self.sectionLabels.isEmpty || self.sectionLabels.last != firstChar {
@@ -42,7 +44,7 @@ class VKFriendTableViewController: UITableViewController {
     func getFriendsForLable(_ friends : [VKFriend], _ sectionLabels : [String]) -> [[VKFriend]] {
            
         self.filteredFriends = friends
-        if self.friendForLabels.isEmpty {
+        if !self.friendForLabels.isEmpty {
             friendForLabels.removeAll()
         }
         for i in 0..<sectionLabels.count {
@@ -80,6 +82,7 @@ class VKFriendTableViewController: UITableViewController {
         self.table_item1.keyboardDismissMode = .onDrag
         searchBar.delegate = self
         self.table_item1.tableHeaderView = searchBar
+        self.filteredFriends = friends
         
   }
     // MARK: - Table view data source
@@ -117,7 +120,7 @@ class VKFriendTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if friendForLabels.count > 0
+        if self.friendForLabels.count > 0
         {
             self.friendForLabels[section].removeAll()
             self.friendForLabels[section] = filteredFriends.filter {
@@ -213,11 +216,11 @@ class VKFriendTableViewController: UITableViewController {
             case let .failure(error):
                 print(error)
             case let .success(photos):
-                vc?.photos = photos
+                self.photos = photos
             }
-            
-        }
-        )
+        })
+        vc?.photos = self.photos
+        
         
     }
 

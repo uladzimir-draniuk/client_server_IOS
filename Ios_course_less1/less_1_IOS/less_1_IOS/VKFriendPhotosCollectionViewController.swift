@@ -18,6 +18,7 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
     var data : VKFriend!
     var currIndex: IndexPath?
     var photos : [VKPhoto]!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,7 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
                 print(error)
             case let .success(photos):
                 self.photos = photos
+                self.collectionView.reloadData()
             }
         })
  
@@ -85,14 +87,17 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let count = self.photos?.count {
-            return count
-        } else {
-            return 1
+        if let isGood = self.photos?.first {
+            if let count = self.photos?[0].count,
+               count > 0 {
+                return count
+            }
         }
-        
+        return 1
     }
-
+    
+    
+    
     
  //  let likeButton = LikesButton()
     
@@ -105,27 +110,32 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
                 } else {
                     cell.photoFriend.kf.setImage(with: self.data.photoUrl)
                 }
+            } else {
+                cell.photoFriend.kf.setImage(with: self.data.photoUrl)
             }
+            
+            
         }
-        
         return cell
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        netSession.loadPics(owner: data.id, completionHandler: { result in
-//            switch result {
-//            case let .failure(error):
-//                print(error)
-//            case let .success(photos):
-//                self.photos = photos
-//            }
-//        })
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        netSession.loadPics(owner: data.id, completionHandler: { result in
+            switch result {
+            case let .failure(error):
+                print(error)
+            case let .success(photos):
+                self.photos = photos
+                self.collectionView.reloadData()
+            
+            }
+        })
+    }
     
     func getMSizePhotoUrl (index: Int) -> URL? {
         if let photo = self.photos?[index] {
             for size in photo.photos {
-                if size.type == "m" {
+                if size.type == "p" {
                     return size.photoUrl
                 }
             }

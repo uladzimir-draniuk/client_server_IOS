@@ -13,10 +13,12 @@ class VKPhoto {
     let id: Int
     let ownerId: Int
     var photos = [VKPhotoSizes]()
+    var count : Int?
 
     init(json: JSON) {
         self.id = json["id"].intValue
         self.ownerId = json["owner_id"].intValue
+        
     }
 }
 

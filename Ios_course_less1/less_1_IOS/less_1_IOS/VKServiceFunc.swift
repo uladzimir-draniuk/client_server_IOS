@@ -111,19 +111,21 @@ class VKServiceFunc {
         AF.request(baseVkUrl + path, method: .get, parameters: photoParams).responseJSON { response in
             switch response.result {
             case let .failure(error):
-                //completionHandler(.failure(error))
-                print("error = \(error)")
+                completionHandler(.failure(error))
             case let .success(json):
-                let count = JSON(json)["count"].intValue
+                var count = JSON(json)["response"]["count"].intValue
                 let photosJSONArray = JSON(json)["response"]["items"].arrayValue
                 let photosFriend = photosJSONArray.map(VKPhoto.init)
-                
+                if count > 50 {
+                    count = 50
+                }
                 for index in 0..<count {
                     let photoSizeJSONArray = JSON(json)["response"]["items"][index]["sizes"].arrayValue
                     let photoSizeArray = photoSizeJSONArray.map(VKPhotoSizes.init)
                     photosFriend[index].photos = photoSizeArray
+                    photosFriend[index].count = count
+                    
                 }
-                print("photo 2 is \(photosFriend[2])")
                 completionHandler(.success(photosFriend))
             }
         }
