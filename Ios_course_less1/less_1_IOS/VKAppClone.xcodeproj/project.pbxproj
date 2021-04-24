@@ -49,7 +49,7 @@
 
 /* Begin PBXFileReference section */
 		7107F75C261086780083EE0A /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		7124967025C4A3F30059FEE0 /* less_1_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = less_1_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7124967025C4A3F30059FEE0 /* VKAppClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKAppClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7124967325C4A3F30059FEE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7124967525C4A3F30059FEE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7124967725C4A3F30059FEE0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 		7124967125C4A3F30059FEE0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7124967025C4A3F30059FEE0 /* less_1_IOS.app */,
+				7124967025C4A3F30059FEE0 /* VKAppClone.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -195,9 +195,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7124966F25C4A3F30059FEE0 /* less_1_IOS */ = {
+		7124966F25C4A3F30059FEE0 /* VKAppClone */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7124968425C4A3F60059FEE0 /* Build configuration list for PBXNativeTarget "less_1_IOS" */;
+			buildConfigurationList = 7124968425C4A3F60059FEE0 /* Build configuration list for PBXNativeTarget "VKAppClone" */;
 			buildPhases = (
 				7124966C25C4A3F30059FEE0 /* Sources */,
 				7124966D25C4A3F30059FEE0 /* Frameworks */,
@@ -207,14 +207,14 @@
 			);
 			dependencies = (
 			);
-			name = less_1_IOS;
+			name = VKAppClone;
 			packageProductDependencies = (
 				71F40476262CD77300C54765 /* SwiftyJSON */,
 				71F4047A262CD7DA00C54765 /* Kingfisher */,
 				71F40487262CDB6200C54765 /* Alamofire */,
 			);
 			productName = less_1_IOS;
-			productReference = 7124967025C4A3F30059FEE0 /* less_1_IOS.app */;
+			productReference = 7124967025C4A3F30059FEE0 /* VKAppClone.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -231,7 +231,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7124966B25C4A3F30059FEE0 /* Build configuration list for PBXProject "less_1_IOS" */;
+			buildConfigurationList = 7124966B25C4A3F30059FEE0 /* Build configuration list for PBXProject "VKAppClone" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -249,7 +249,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7124966F25C4A3F30059FEE0 /* less_1_IOS */,
+				7124966F25C4A3F30059FEE0 /* VKAppClone */,
 			);
 		};
 /* End PBXProject section */
@@ -486,7 +486,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7124966B25C4A3F30059FEE0 /* Build configuration list for PBXProject "less_1_IOS" */ = {
+		7124966B25C4A3F30059FEE0 /* Build configuration list for PBXProject "VKAppClone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7124968225C4A3F60059FEE0 /* Debug */,
@@ -495,7 +495,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7124968425C4A3F60059FEE0 /* Build configuration list for PBXNativeTarget "less_1_IOS" */ = {
+		7124968425C4A3F60059FEE0 /* Build configuration list for PBXNativeTarget "VKAppClone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7124968525C4A3F60059FEE0 /* Debug */,
