@@ -11,53 +11,41 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="gTV-IL-0wX" customClass="FriendPhotosCollectionViewCell" customModule="less_1_IOS" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="gTV-IL-0wX" customClass="FriendPhotosCollectionViewCell" customModule="VKAppClone" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ebK-cZ-aZZ">
-                        <rect key="frame" x="0.0" y="0.0" width="180" height="150"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
-                    </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lXv-XL-F5q">
-                        <rect key="frame" x="0.0" y="150" width="180" height="30"/>
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="psT-G0-mYy">
+                        <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6ww-af-EIg">
+                                <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="2bQ-b2-Lbl"/>
-                            <constraint firstAttribute="width" constant="180" id="SDC-SR-cpZ"/>
+                            <constraint firstAttribute="width" secondItem="6ww-af-EIg" secondAttribute="width" id="BpG-XQ-GfB"/>
+                            <constraint firstItem="6ww-af-EIg" firstAttribute="top" secondItem="psT-G0-mYy" secondAttribute="top" id="JOh-f3-rA4"/>
+                            <constraint firstAttribute="trailing" secondItem="6ww-af-EIg" secondAttribute="trailing" id="YA8-55-v3b"/>
+                            <constraint firstItem="6ww-af-EIg" firstAttribute="leading" secondItem="psT-G0-mYy" secondAttribute="leading" id="alt-C5-XWJ"/>
+                            <constraint firstAttribute="bottom" secondItem="6ww-af-EIg" secondAttribute="bottom" id="ePh-4a-fWk"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
-            <constraints>
-                <constraint firstItem="lXv-XL-F5q" firstAttribute="top" secondItem="ebK-cZ-aZZ" secondAttribute="bottom" id="4Jp-cX-jhH"/>
-                <constraint firstAttribute="bottom" secondItem="lXv-XL-F5q" secondAttribute="bottom" id="CNg-aI-t6i"/>
-                <constraint firstItem="lXv-XL-F5q" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="L6r-hQ-Snk"/>
-                <constraint firstAttribute="bottom" secondItem="lXv-XL-F5q" secondAttribute="bottom" id="Ndh-ss-1L5"/>
-                <constraint firstAttribute="trailing" secondItem="lXv-XL-F5q" secondAttribute="trailing" id="QSN-Ds-Vbl"/>
-                <constraint firstAttribute="trailing" secondItem="ebK-cZ-aZZ" secondAttribute="trailing" id="TTH-X7-r0c"/>
-                <constraint firstItem="ebK-cZ-aZZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hE0-to-3a0"/>
-                <constraint firstAttribute="bottom" secondItem="ebK-cZ-aZZ" secondAttribute="bottom" constant="30" id="pja-K5-aS2"/>
-                <constraint firstItem="ebK-cZ-aZZ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="wx2-Cd-6rZ"/>
-            </constraints>
             <size key="customSize" width="294" height="206"/>
             <connections>
-                <outlet property="likeButton" destination="lXv-XL-F5q" id="W1m-6m-fQH"/>
-                <outlet property="photoFriend" destination="ebK-cZ-aZZ" id="JEi-Ad-wfX"/>
+                <outlet property="photoFriend" destination="6ww-af-EIg" id="yTl-ad-7Wr"/>
             </connections>
             <point key="canvasLocation" x="217.39130434782609" y="97.767857142857139"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

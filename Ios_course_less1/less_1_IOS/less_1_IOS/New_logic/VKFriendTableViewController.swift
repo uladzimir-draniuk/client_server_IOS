@@ -24,7 +24,9 @@ class VKFriendTableViewController: UITableViewController {
     func getSorted(inOut: [VKFriend] ) -> [VKFriend] {
         
         self.friends = inOut.sorted { friend1, friend2 in
-            friend1.lastName.first! < friend2.lastName.first!
+            guard let firstCharacter1 = friend1.lastName.first,
+                  let firstCharacter2 = friend2.lastName.first else { return true }
+            return firstCharacter1 < firstCharacter2
         }
         return self.friends
     }
@@ -95,7 +97,10 @@ class VKFriendTableViewController: UITableViewController {
             case let .success(friends):
                 self.friends = friends
                 if self.friends.count > 0 {
-                    self.filteredFriends = self.getSorted(inOut: self.friends)
+                    let friendsWithoutDeleted = self.friends.filter {
+                        !$0.firstName.isEmpty && !$0.lastName.isEmpty
+                    }
+                    self.filteredFriends = self.getSorted(inOut: friendsWithoutDeleted)
                     self.friendForLabels = self.getFriendsForLable(self.friends,self.getLabelForFriend(self.friends))
                     
                 }
@@ -103,11 +108,6 @@ class VKFriendTableViewController: UITableViewController {
                 self.filteredFriends = friends
             }
         })
-        
-        
-        
-        
-//        self.filteredFriends = friends
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -148,7 +148,6 @@ class VKFriendTableViewController: UITableViewController {
         if self.friendForLabels.count > 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendTableViewCell
             
-            
             cell.friendName.text = self.friendForLabels[indexPath.section][indexPath.row].lastName + " " + self.friendForLabels[indexPath.section][indexPath.row].firstName
             cell.avatarView.imageView.kf.setImage(with: self.friendForLabels[indexPath.section][indexPath.row].photoUrl)
             
@@ -165,8 +164,6 @@ class VKFriendTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath)
             return cell
         }
-        
-        
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -211,17 +208,15 @@ class VKFriendTableViewController: UITableViewController {
         
         let vc = segue.destination as? VKFriendPhotosCollectionViewController
         vc?.data = self.friendForLabels[indexPath.section][indexPath.row]
-        netSession.loadPics(owner: (vc?.data.id)!, completionHandler: { result in
-            switch result {
-            case let .failure(error):
-                print(error)
-            case let .success(photos):
-                self.photos = photos
-            }
-        })
+//        netSession.loadPics(owner: (vc?.data.id)!, completionHandler: { result in
+//            switch result {
+//            case let .failure(error):
+//                print(error)
+//            case let .success(photos):
+//                self.photos = photos
+//            }
+//        })
         vc?.photos = self.photos
-        
-        
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

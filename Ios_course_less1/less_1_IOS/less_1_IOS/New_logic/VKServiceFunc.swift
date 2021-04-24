@@ -49,10 +49,9 @@ class VKServiceFunc {
 //    }
     
     func loadFriends(completionHandler: @escaping ((Result<[VKFriend], Error>) -> Void)) {
+
         let path = "/method/friends.get"
         
-//        fields список дополнительных полей, которые необходимо вернуть.
-//        Доступные значения: nickname, domain, sex, bdate, city, country, timezone, photo_50, photo_100, photo_200_orig, has_mobile, contacts, education, online, relation, last_seen, status, can_write_private_message, can_see_all_posts, can_post, universities
         var params = baseParams
         params["fields"] = [ "photo_100" ]
         
@@ -61,12 +60,6 @@ class VKServiceFunc {
             case let .failure(error):
                 completionHandler(.failure(error))
             case let .success(json):
-                //            {
-                //              "response" : {
-                //                "count" : 322,
-                //                "items" : [
-                //                  {
-                //                    "id" : 6949,
                 let friendsJSONArray = JSON(json)["response"]["items"].arrayValue
                 let friends = friendsJSONArray.map(VKFriend.init)
                 print("first friend \(friends[0])")
@@ -131,18 +124,3 @@ class VKServiceFunc {
         }
     }
 }
-//json = {
-//    response =     {
-//        count = 49;
-//        items =         (
-//                        {
-//                "album_id" = "-7";
-//                date = 1424187446;
-//                "has_tags" = 0;
-//                id = 354580807;
-//                "owner_id" = 136709529;
-//                sizes =                 (
-//                                        {
-//                        height = 97;
-//                        type = m;
-//                        url =
