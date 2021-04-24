@@ -130,10 +130,7 @@
 				7124967E25C4A3F60059FEE0 /* LaunchScreen.storyboard */,
 				7124968125C4A3F60059FEE0 /* Info.plist */,
 				71F40472262CD6C000C54765 /* Old_logic */,
-				71F4047D262CD85600C54765 /* VKLoginViewController.swift */,
-				71F40480262CDA5D00C54765 /* VKFriendTableViewController.swift */,
-				71F40483262CDAE800C54765 /* VKServiceFunc.swift */,
-				71F4048D262CDE4400C54765 /* VKFriendPhotosCollectionViewController.swift */,
+				71C6A7842634C5D500C3DF2E /* New_logic */,
 			);
 			path = less_1_IOS;
 			sourceTree = "<group>";
@@ -162,6 +159,17 @@
 				71752C4725D219E000B0A660 /* FriendTableViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		71C6A7842634C5D500C3DF2E /* New_logic */ = {
+			isa = PBXGroup;
+			children = (
+				71F4047D262CD85600C54765 /* VKLoginViewController.swift */,
+				71F40480262CDA5D00C54765 /* VKFriendTableViewController.swift */,
+				71F40483262CDAE800C54765 /* VKServiceFunc.swift */,
+				71F4048D262CDE4400C54765 /* VKFriendPhotosCollectionViewController.swift */,
+			);
+			path = New_logic;
 			sourceTree = "<group>";
 		};
 		71F40472262CD6C000C54765 /* Old_logic */ = {
