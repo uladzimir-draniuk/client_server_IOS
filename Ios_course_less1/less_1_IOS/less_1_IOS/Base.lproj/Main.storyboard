@@ -14,7 +14,7 @@
         <!--Login View Controller-->
         <scene sceneID="aGF-2y-560">
             <objects>
-                <viewController id="5VH-7J-8kD" customClass="VKLoginViewController" customModule="less_1_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5VH-7J-8kD" customClass="VKLoginViewController" customModule="VKAppClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N5T-9e-wZL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,7 @@
         <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController1" customModule="less_1_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController1" customModule="VKAppClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,7 +195,7 @@
         <!--LikesButton-->
         <scene sceneID="6aY-uj-F9U">
             <objects>
-                <viewController id="i3C-ql-rzz" customClass="ViewController2" customModule="less_1_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="i3C-ql-rzz" customClass="ViewController2" customModule="VKAppClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vkl-Ih-qNC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -208,10 +208,10 @@
             </objects>
             <point key="canvasLocation" x="-488" y="-1264"/>
         </scene>
-        <!--Table View Controller3-->
+        <!--Search Group Table View Controller-->
         <scene sceneID="fex-h2-3Ss">
             <objects>
-                <tableViewController id="m8X-Oa-pkY" customClass="TableViewController3" customModule="less_1_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="m8X-Oa-pkY" customClass="VKSearchGroupTableViewController" customModule="VKAppClone" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="VFU-T4-pNs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -224,6 +224,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Rsv-7o-TIG" kind="showDetail" identifier="ShowGroupView" id="kS6-0h-Ibz"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -233,17 +236,51 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="pPh-co-DXf"/>
                     <connections>
-                        <outlet property="table_group" destination="VFU-T4-pNs" id="gvk-av-flo"/>
+                        <outlet property="table_group" destination="VFU-T4-pNs" id="4xs-TS-imz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lel-qr-ADj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1236" y="846"/>
+            <point key="canvasLocation" x="-1165" y="846"/>
+        </scene>
+        <!--Group View Controller-->
+        <scene sceneID="PmY-5A-TiG">
+            <objects>
+                <viewController id="Rsv-7o-TIG" customClass="VKGroupViewController" customModule="VKAppClone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CJc-yg-cg7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qtp-nO-HJe">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="I9h-3c-WL1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qtp-nO-HJe" firstAttribute="leading" secondItem="CJc-yg-cg7" secondAttribute="leading" id="B3n-cK-pde"/>
+                            <constraint firstAttribute="trailing" secondItem="qtp-nO-HJe" secondAttribute="trailing" id="Hmw-ay-4HQ"/>
+                            <constraint firstItem="qtp-nO-HJe" firstAttribute="top" secondItem="CJc-yg-cg7" secondAttribute="top" id="aat-RN-LTw"/>
+                            <constraint firstAttribute="bottom" secondItem="qtp-nO-HJe" secondAttribute="bottom" constant="34" id="tSk-iy-N7i"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="qtp-nO-HJe" id="084-5B-JEA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zlp-GS-B4d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-381" y="865"/>
         </scene>
         <!--Photo Gallery View Controller-->
         <scene sceneID="MQO-DX-qTl">
             <objects>
-                <viewController storyboardIdentifier="PhotoGalleryViewController" modalTransitionStyle="flipHorizontal" id="yAc-tE-k8s" customClass="PhotoGalleryViewController" customModule="less_1_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoGalleryViewController" modalTransitionStyle="flipHorizontal" id="yAc-tE-k8s" customClass="PhotoGalleryViewController" customModule="VKAppClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" ambiguous="YES" id="XB0-1q-dYd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -302,12 +339,12 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-2878.2608695652175" y="861.83035714285711"/>
+            <point key="canvasLocation" x="-3597" y="865"/>
         </scene>
         <!--Friend Photos Collection View Controller-->
         <scene sceneID="eE5-Rc-gYu">
             <objects>
-                <collectionViewController id="jB2-nV-weo" customClass="VKFriendPhotosCollectionViewController" customModule="less_1_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="jB2-nV-weo" customClass="VKFriendPhotosCollectionViewController" customModule="VKAppClone" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="G9y-b6-PaO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -349,7 +386,7 @@
         <!--Item 2-->
         <scene sceneID="IMi-9V-kSr">
             <objects>
-                <tableViewController title="Item 2" id="jjb-cn-tav" customClass="TableViewController2" customModule="less_1_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Item 2" id="jjb-cn-tav" customClass="VKGroupTableViewController" customModule="VKAppClone" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="groupCell" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="6" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="hvt-1o-Cdb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -358,10 +395,13 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="groupCell" id="jbB-wZ-bMW">
                                 <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jbB-wZ-bMW" id="CVV-H4-Qxt" customClass="GroupTableViewCell" customModule="less_1_IOS" customModuleProvider="target">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jbB-wZ-bMW" id="CVV-H4-Qxt" customClass="GroupTableViewCell" customModule="VKAppClone" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Rsv-7o-TIG" kind="showDetail" identifier="ShowMyGroup" id="ud9-hY-iJd"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -372,15 +412,16 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="jQe-Jo-DAq">
-                        <barButtonItem key="leftBarButtonItem" title="Bar Item" image="folder" catalog="system" id="BqB-O8-het">
+                        <barButtonItem key="leftBarButtonItem" title="Bar Item" image="magnifyingglass" catalog="system" id="BqB-O8-het">
                             <connections>
+                                <action selector="pushBarButton:" destination="jjb-cn-tav" id="cph-yj-uL0"/>
                                 <segue destination="m8X-Oa-pkY" kind="show" id="fHc-GS-ETz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="table_group" destination="hvt-1o-Cdb" id="0Vb-wr-aMp"/>
+                        <outlet property="table_group" destination="hvt-1o-Cdb" id="KdO-NS-oC2"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2C-Z9-mG1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -390,13 +431,13 @@
         <!--Friend Table View Controller-->
         <scene sceneID="63J-sT-HK9">
             <objects>
-                <tableViewController id="MRk-CQ-B4J" customClass="VKFriendTableViewController" customModule="less_1_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="MRk-CQ-B4J" customClass="VKFriendTableViewController" customModule="VKAppClone" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Xyw-U2-wju">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FriendCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="hWH-7M-J5i" customClass="FriendTableViewCell" customModule="less_1_IOS" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FriendCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="hWH-7M-J5i" customClass="FriendTableViewCell" customModule="VKAppClone" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hWH-7M-J5i" id="5gk-TF-bVL">
@@ -512,13 +553,13 @@
         <!--Root View Controller-->
         <scene sceneID="Qhh-5t-Y10">
             <objects>
-                <tableViewController id="KU8-Pu-1g2" customClass="NewsViewController" customModule="less_1_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="KU8-Pu-1g2" customClass="NewsViewController" customModule="VKAppClone" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="k1J-w6-R3k">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="newsCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" id="6iH-I2-orw" customClass="NewsTableViewCell" customModule="less_1_IOS" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="newsCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" id="6iH-I2-orw" customClass="NewsTableViewCell" customModule="VKAppClone" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6iH-I2-orw" id="ucg-yZ-Ea2">
@@ -560,11 +601,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="ud9-hY-iJd"/>
         <segue reference="IB0-F9-o9O"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="folder" catalog="system" width="128" height="97"/>
         <image name="graduationcap" catalog="system" width="128" height="106"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="network" catalog="system" width="128" height="121"/>
         <image name="newspaper" catalog="system" width="128" height="108"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>

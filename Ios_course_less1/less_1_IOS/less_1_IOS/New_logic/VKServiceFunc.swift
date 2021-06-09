@@ -68,29 +68,43 @@ class VKServiceFunc {
         }
     }
     
-//    func searchGroup(group: String, completionHandler: @escaping ((Result<[Group], Error>) -> Void)) {
-//        let path = "/method/groups.search"
-//        var params = baseParams
-//        params["q"] = group
-//
-//        print("group \(group)")
-//
-//        AF.request(baseVkUrl + path, method: .get, parameters: params).responseData { response in
-//            switch response.result {
-//            case let .success(data):
-//                do {
-//                    let groupsResponse = try JSONDecoder().decode(GroupResponse.self, from: data)
-//                    let groups = groupsResponse.response.items
-//                    completionHandler(.success(groups))
-//                } catch {
-//                    completionHandler(.failure(error))
-//                }
-//            case let .failure(error):
-//                completionHandler(.failure(error))
-//            }
-//        }
-//   }
-//
+    func loadGroup(completionHandler: @escaping ((Result<[VKGroup], Error>) -> Void)) {
+        let path = "/method/groups.get"
+        let params = baseParams
+ 
+        AF.request(baseVkUrl + path, method: .get, parameters: params).responseData { response in
+            switch response.result {
+            case let .success(data):
+//                let count = JSON(data)["response"]["count"].intValue
+                let groupArray = JSON(data)["response"]["items"].arrayValue
+                let groups = groupArray.map(VKGroup.init)
+                print("first group \(groupArray[0])")
+                completionHandler(.success(groups))
+            case let .failure(error):
+                completionHandler(.failure(error))
+            }
+        }
+    }
+
+    
+    func searchGroup(group: String, completionHandler: @escaping ((Result<[VKGroup], Error>) -> Void)) {
+        let path = "/method/groups.search"
+        var params = baseParams
+        params["q"] = group
+ 
+        AF.request(baseVkUrl + path, method: .get, parameters: params).responseData { response in
+            switch response.result {
+            case let .success(data):
+//                let count = JSON(data)["response"]["count"].intValue
+                let groupArray = JSON(data)["response"]["items"].arrayValue
+                let groups = groupArray.map(VKGroup.init)
+                completionHandler(.success(groups))
+            case let .failure(error):
+                completionHandler(.failure(error))
+            }
+        }
+    }
+    
     func loadPics(owner: Int, completionHandler: @escaping ((Result<[VKPhoto], Error>) -> Void)) {
         //photos.getUserPhotos
         let path = "/method/photos.get"

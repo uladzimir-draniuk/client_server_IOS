@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftyJSON
-
+import RealmSwift
 
 //{
 //  "response" : {
@@ -31,15 +31,32 @@ import SwiftyJSON
 //        "first_name" : "Dmitry"
 //      },
 
-class VKFriend {
-    let id: Int
-    private let photoUrlString: String
-    let firstName: String
-    let lastName: String
+//class VKFriend {
+//    let id: Int
+//    private let photoUrlString: String
+//    let firstName: String
+//    let lastName: String
+//
+//    var photoUrl: URL? { URL(string: photoUrlString) }
+//
+//    init(json: JSON) {
+//        self.id = json["id"].intValue
+//        self.photoUrlString = json["photo_100"].stringValue
+//        self.firstName = json["first_name"].stringValue
+//        self.lastName = json["last_name"].stringValue
+//    }
+//}
+class VKFriend : RealmSwift.Object {
+    
+    @objc dynamic var id: Int = 0
+    @objc dynamic var photoUrlString: String = ""
+    @objc dynamic var firstName: String = ""
+    @objc dynamic var lastName: String = ""
     
     var photoUrl: URL? { URL(string: photoUrlString) }
     
-    init(json: JSON) {
+    convenience init(json: JSON) {
+        self.init()
         self.id = json["id"].intValue
         self.photoUrlString = json["photo_100"].stringValue
         self.firstName = json["first_name"].stringValue

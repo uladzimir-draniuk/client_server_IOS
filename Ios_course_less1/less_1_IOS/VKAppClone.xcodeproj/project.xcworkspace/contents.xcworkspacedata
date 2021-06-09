@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/elf/Documents/VKClone_les_3-9/Ios_course_less1/less_1_IOS/VKAppClone.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

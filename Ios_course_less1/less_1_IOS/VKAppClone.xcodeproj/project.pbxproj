@@ -36,6 +36,11 @@
 		71B9D6A225DB385600DD25D5 /* LikesButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B9D6A125DB385600DD25D5 /* LikesButtonViewController.swift */; };
 		71D877AD25C9B210006064F8 /* TableViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D877AC25C9B210006064F8 /* TableViewController1.swift */; };
 		71DF9D1625CC509500AFCD78 /* TableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF9D1525CC509500AFCD78 /* TableViewController2.swift */; };
+		71E3E27526494F86006FAE22 /* VKGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3E27426494F86006FAE22 /* VKGroup.swift */; };
+		71E3E2782649562F006FAE22 /* VKGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3E2772649562F006FAE22 /* VKGroupTableViewController.swift */; };
+		71E3E27B26497121006FAE22 /* VKSearchGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3E27A26497121006FAE22 /* VKSearchGroupTableViewController.swift */; };
+		71E3E27F26497F49006FAE22 /* VKGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3E27E26497F49006FAE22 /* VKGroupViewController.swift */; };
+		71E3E283264997D3006FAE22 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 71E3E282264997D3006FAE22 /* RealmSwift */; };
 		71F40477262CD77300C54765 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 71F40476262CD77300C54765 /* SwiftyJSON */; };
 		71F4047B262CD7DA00C54765 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 71F4047A262CD7DA00C54765 /* Kingfisher */; };
 		71F4047E262CD85600C54765 /* VKLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F4047D262CD85600C54765 /* VKLoginViewController.swift */; };
@@ -79,6 +84,10 @@
 		71B9D6A125DB385600DD25D5 /* LikesButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesButtonViewController.swift; sourceTree = "<group>"; };
 		71D877AC25C9B210006064F8 /* TableViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController1.swift; sourceTree = "<group>"; };
 		71DF9D1525CC509500AFCD78 /* TableViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController2.swift; sourceTree = "<group>"; };
+		71E3E27426494F86006FAE22 /* VKGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKGroup.swift; sourceTree = "<group>"; };
+		71E3E2772649562F006FAE22 /* VKGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKGroupTableViewController.swift; sourceTree = "<group>"; };
+		71E3E27A26497121006FAE22 /* VKSearchGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKSearchGroupTableViewController.swift; sourceTree = "<group>"; };
+		71E3E27E26497F49006FAE22 /* VKGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKGroupViewController.swift; sourceTree = "<group>"; };
 		71F4047D262CD85600C54765 /* VKLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginViewController.swift; sourceTree = "<group>"; };
 		71F40480262CDA5D00C54765 /* VKFriendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKFriendTableViewController.swift; sourceTree = "<group>"; };
 		71F40483262CDAE800C54765 /* VKServiceFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKServiceFunc.swift; sourceTree = "<group>"; };
@@ -92,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71E3E283264997D3006FAE22 /* RealmSwift in Frameworks */,
 				71F40488262CDB6200C54765 /* Alamofire in Frameworks */,
 				71F4047B262CD7DA00C54765 /* Kingfisher in Frameworks */,
 				71F40477262CD77300C54765 /* SwiftyJSON in Frameworks */,
@@ -142,6 +152,7 @@
 				7107F75C261086780083EE0A /* Session.swift */,
 				71F4048A262CDC5300C54765 /* VKFriend.swift */,
 				718D5BF0262E286400989585 /* VKPhoto.swift */,
+				71E3E27426494F86006FAE22 /* VKGroup.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -168,6 +179,9 @@
 				71F40480262CDA5D00C54765 /* VKFriendTableViewController.swift */,
 				71F40483262CDAE800C54765 /* VKServiceFunc.swift */,
 				71F4048D262CDE4400C54765 /* VKFriendPhotosCollectionViewController.swift */,
+				71E3E2772649562F006FAE22 /* VKGroupTableViewController.swift */,
+				71E3E27A26497121006FAE22 /* VKSearchGroupTableViewController.swift */,
+				71E3E27E26497F49006FAE22 /* VKGroupViewController.swift */,
 			);
 			path = New_logic;
 			sourceTree = "<group>";
@@ -220,6 +234,7 @@
 				71F40476262CD77300C54765 /* SwiftyJSON */,
 				71F4047A262CD7DA00C54765 /* Kingfisher */,
 				71F40487262CDB6200C54765 /* Alamofire */,
+				71E3E282264997D3006FAE22 /* RealmSwift */,
 			);
 			productName = less_1_IOS;
 			productReference = 7124967025C4A3F30059FEE0 /* VKAppClone.app */;
@@ -252,6 +267,7 @@
 				71F40475262CD77300C54765 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				71F40479262CD7DA00C54765 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				71F40486262CDB6200C54765 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				71E3E281264997D3006FAE22 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = 7124967125C4A3F30059FEE0 /* Products */;
 			projectDirPath = "";
@@ -287,6 +303,7 @@
 				71F4048B262CDC5300C54765 /* VKFriend.swift in Sources */,
 				71752C4225D2101E00B0A660 /* TableViewController3.swift in Sources */,
 				71752C1F25D1DBCD00B0A660 /* Group.swift in Sources */,
+				71E3E27F26497F49006FAE22 /* VKGroupViewController.swift in Sources */,
 				71F4047E262CD85600C54765 /* VKLoginViewController.swift in Sources */,
 				71A7EDC325E436AE0067F270 /* LoadingBar.swift in Sources */,
 				7124968B25C4BE6F0059FEE0 /* ViewController1.swift in Sources */,
@@ -300,6 +317,7 @@
 				71752C4825D219E000B0A660 /* FriendTableViewCell.swift in Sources */,
 				7124967425C4A3F30059FEE0 /* AppDelegate.swift in Sources */,
 				71FA0A4225D9275600284131 /* AvatarView.swift in Sources */,
+				71E3E27526494F86006FAE22 /* VKGroup.swift in Sources */,
 				71F4048E262CDE4400C54765 /* VKFriendPhotosCollectionViewController.swift in Sources */,
 				71752C2E25D1F50200B0A660 /* FriendPhotosCollectionViewCell.swift in Sources */,
 				7124967625C4A3F30059FEE0 /* SceneDelegate.swift in Sources */,
@@ -307,10 +325,12 @@
 				716F564325E01FEC00F6B598 /* NewsTableViewCell.swift in Sources */,
 				7107F75D261086780083EE0A /* Session.swift in Sources */,
 				71F40484262CDAE800C54765 /* VKServiceFunc.swift in Sources */,
+				71E3E27B26497121006FAE22 /* VKSearchGroupTableViewController.swift in Sources */,
 				718D5BF1262E286500989585 /* VKPhoto.swift in Sources */,
 				71F40481262CDA5D00C54765 /* VKFriendTableViewController.swift in Sources */,
 				71752C1B25D1DB4300B0A660 /* Friend.swift in Sources */,
 				71B119EC25E831F100BBD112 /* PhotoGalleryViewController.swift in Sources */,
+				71E3E2782649562F006FAE22 /* VKGroupTableViewController.swift in Sources */,
 				71752C3225D1F86E00B0A660 /* PhotosCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,6 +535,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		71E3E281264997D3006FAE22 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.7.5;
+			};
+		};
 		71F40475262CD77300C54765 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
@@ -542,6 +570,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		71E3E282264997D3006FAE22 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71E3E281264997D3006FAE22 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
 		71F40476262CD77300C54765 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 71F40475262CD77300C54765 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
