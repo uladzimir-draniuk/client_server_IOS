@@ -7,6 +7,8 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
+
 
 private let reuseIdentifier = "Cell"
 
@@ -14,11 +16,18 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
 
     private var netSession = VKServiceFunc.init(token: Session.shared.token)
     
+    private var photos: Results<VKPhoto>? = try? RealmAdds.get(type: VKPhoto.self)
+    
     private let reuseIdentifier = "PhotoCell"
-    var data : VKFriend!
+    var data : VKFriend?
+    
+    private lazy var friend: VKFriend? =
+        data.flatMap {
+            try? Realm(configuration: RealmAdds.deleteIfMigration)
+                .object(ofType: VKFriend.self, forPrimaryKey: $0.id)
+        }
+    
     var currIndex: IndexPath?
-    var photos : [VKPhoto] = []
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,25 +35,73 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
         // Register cell classes
         self.collectionView.register(UINib(nibName: "FriendPhotosCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: self.reuseIdentifier)
 
-        guard let friend = self.data else { return }
-        // Do any additional setup after loading the view.
-        self.navigationItem.title = data.lastName + " " + data.firstName
+        guard let friend = friend else { return }
+
+        self.navigationItem.title = friend.lastName + " " + friend.firstName
 
      }
     
+    /*
+     if let currentFriend = displayedFriend?.id {
+         networkSession.loadPhotos(owner: currentFriend, completionHandler: { [weak self] result in //617849582
+             switch result {
+             case let .failure(error):
+                 print(error)
+             case let .success(photos):
+                 guard let friend = self?.friend else { return }
+                 do {
+                     let realm = try Realm()
+                     
+                     try realm.write {
+                         friend.photos.removeAll()
+                         friend.photos.append(objectsIn: photos)
+                     }
+                     
+                 } catch {
+                     print(error)
+                 }
+             }
+         })
+     }
+ }
+     */
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let friendId = friend?.id {
+            netSession.loadPics(owner: friendId, completionHandler: { [weak self] result in
+                switch result {
+                case let .failure(error):
+                    print(error)
+                case let .success(photos):
+                    guard let friend = self?.friend else { return }
+                    do {
+                        let realm = try Realm()
+                        try realm.write {
+//                            friend.photos.removeAll()
+//                            friend.photos.append(objectsIn: photos)
+                        }
+                    } catch {
+                        print(error)
+                    }
+                    self?.collectionView.reloadData()
+                }
+            })
+        }
+        
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        self.currIndex = indexPath
-        self.performSegue(withIdentifier: "showFriendImages", sender: self)
+        currIndex = indexPath
+        performSegue(withIdentifier: "showFriendImages", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        guard let indexPath = self.currIndex , segue.identifier == "showFriendImages" else { return }
+        guard let indexPath = currIndex , segue.identifier == "showFriendImages" else { return }
         
         let vc = segue.destination as? PhotoGalleryViewController
- //       vc?.data = self.data
         vc?.photoNum = indexPath.row
     }
     
@@ -53,52 +110,37 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let isGood = self.photos.first {
-            if let count = self.photos[0].count,
-               count > 0 {
-                return count
-            }
-        }
-        return 1
+//        return friend?.photos[section].count ?? 0
+        return 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FriendPhotosCollectionViewCell
         
-        let count = self.photos.count
+//        guard let count = friend?.photos.count else {return cell}
+        guard let count = self.photos?.count else {return cell}
         if indexPath.item < count {
             if let photoMUrl = getMSizePhotoUrl(index: indexPath.row) {
                 cell.photoFriend.kf.setImage(with: photoMUrl)
             } else {
-                cell.photoFriend.kf.setImage(with: self.data?.photoUrl)
+                cell.photoFriend.kf.setImage(with: friend?.photoUrl)
             }
         }
         return cell
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        netSession.loadPics(owner: data.id, completionHandler: { result in
-            switch result {
-            case let .failure(error):
-                print(error)
-            case let .success(photos):
-                self.photos = photos
-                self.collectionView.reloadData()
-            
-            }
-        })
-    }
-    
+   
     func getMSizePhotoUrl (index: Int) -> URL? {
-        let photo = self.photos[index]
-            for size in photo.photos {
+//        if let photo = friend?.photos[index] {
+        if let photo = self.photos?[index] {
+        for size in photo.photosSize {
                 if size.type == "p" {
                     return size.photoUrl
                 }
             }
-
-        return .none
         }
+        return .none
+    }
 }
 
 extension VKFriendPhotosCollectionViewController: UICollectionViewDelegateFlowLayout {
