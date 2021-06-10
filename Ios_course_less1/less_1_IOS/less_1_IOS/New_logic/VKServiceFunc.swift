@@ -62,7 +62,7 @@ class VKServiceFunc {
             case let .success(json):
                 let friendsJSONArray = JSON(json)["response"]["items"].arrayValue
                 let friends = friendsJSONArray.map(VKFriend.init)
-                print("first friend \(friends[0])")
+//                print("first friend \(friends[0])")
                 completionHandler(.success(friends))
             }
         }
@@ -78,7 +78,7 @@ class VKServiceFunc {
 //                let count = JSON(data)["response"]["count"].intValue
                 let groupArray = JSON(data)["response"]["items"].arrayValue
                 let groups = groupArray.map(VKGroup.init)
-                print("first group \(groupArray[0])")
+//                print("first group \(groupArray[0])")
                 completionHandler(.success(groups))
             case let .failure(error):
                 completionHandler(.failure(error))

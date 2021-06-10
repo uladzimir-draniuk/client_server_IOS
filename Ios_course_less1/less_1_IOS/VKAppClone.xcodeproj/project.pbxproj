@@ -31,6 +31,7 @@
 		71752C4925D219E000B0A660 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71752C4725D219E000B0A660 /* FriendTableViewCell.xib */; };
 		718D5BF1262E286500989585 /* VKPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D5BF0262E286400989585 /* VKPhoto.swift */; };
 		71A7EDC325E436AE0067F270 /* LoadingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A7EDC225E436AE0067F270 /* LoadingBar.swift */; };
+		71AC6F73267172E40026CCC6 /* RealmAdds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AC6F72267172E40026CCC6 /* RealmAdds.swift */; };
 		71B119EC25E831F100BBD112 /* PhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B119EB25E831F100BBD112 /* PhotoGalleryViewController.swift */; };
 		71B9D69E25DB0B1300DD25D5 /* LikesControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B9D69D25DB0B1300DD25D5 /* LikesControlButton.swift */; };
 		71B9D6A225DB385600DD25D5 /* LikesButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B9D6A125DB385600DD25D5 /* LikesButtonViewController.swift */; };
@@ -79,6 +80,7 @@
 		71752C4725D219E000B0A660 /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
 		718D5BF0262E286400989585 /* VKPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKPhoto.swift; sourceTree = "<group>"; };
 		71A7EDC225E436AE0067F270 /* LoadingBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingBar.swift; sourceTree = "<group>"; };
+		71AC6F72267172E40026CCC6 /* RealmAdds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAdds.swift; sourceTree = "<group>"; };
 		71B119EB25E831F100BBD112 /* PhotoGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewController.swift; sourceTree = "<group>"; };
 		71B9D69D25DB0B1300DD25D5 /* LikesControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesControlButton.swift; sourceTree = "<group>"; };
 		71B9D6A125DB385600DD25D5 /* LikesButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesButtonViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				71E3E2772649562F006FAE22 /* VKGroupTableViewController.swift */,
 				71E3E27A26497121006FAE22 /* VKSearchGroupTableViewController.swift */,
 				71E3E27E26497F49006FAE22 /* VKGroupViewController.swift */,
+				71AC6F72267172E40026CCC6 /* RealmAdds.swift */,
 			);
 			path = New_logic;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				7124967825C4A3F30059FEE0 /* ViewController.swift in Sources */,
 				71752C3E25D20BE300B0A660 /* GroupTableViewCell.swift in Sources */,
 				71B9D69E25DB0B1300DD25D5 /* LikesControlButton.swift in Sources */,
+				71AC6F73267172E40026CCC6 /* RealmAdds.swift in Sources */,
 				716F564B25E069AF00F6B598 /* News.swift in Sources */,
 				71DF9D1625CC509500AFCD78 /* TableViewController2.swift in Sources */,
 				71D877AD25C9B210006064F8 /* TableViewController1.swift in Sources */,

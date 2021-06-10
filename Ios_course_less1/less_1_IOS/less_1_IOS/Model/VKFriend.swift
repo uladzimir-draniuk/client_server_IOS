@@ -62,11 +62,15 @@ class VKFriend : RealmSwift.Object {
         self.firstName = json["first_name"].stringValue
         self.lastName = json["last_name"].stringValue
     }
+    
+    override class func primaryKey() -> String? {
+        return "id"
+    }
 }
 
 struct VKFriendSection: Comparable {
     let title: Character
-    let friends: [VKFriend]
+    var friends: [VKFriend]
     
     static func < (lhs: VKFriendSection, rhs: VKFriendSection) -> Bool {
         lhs.title < rhs.title

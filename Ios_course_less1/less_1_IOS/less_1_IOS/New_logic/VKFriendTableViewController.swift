@@ -6,57 +6,80 @@
 //
 
 import UIKit
+import RealmSwift
 
 class VKFriendTableViewController: UITableViewController {
 
     
-    private var friends = [VKFriend]()
+//    private var friends = [VKFriend]()
     private var photos = [VKPhoto]()
     
     private var netSession = VKServiceFunc.init(token: Session.shared.token)
     
-    private var filteredFriends = [VKFriend]()
-    private var sectionLabels = [String]()
-    private var friendForLabels = [[VKFriend]]()
+    private var friends: Results<VKFriend>? = try? RealmAdds.get(type: VKFriend.self)
+    
+//   private var filteredFriends = [VKFriend]()
+ //   private var sectionLabels = [String]()
+//   private var friendForLabels = [[VKFriend]]()
     
     @IBOutlet var table_item1: UITableView!
     
-    func getSorted(inOut: [VKFriend] ) -> [VKFriend] {
-        
-        self.friends = inOut.sorted { friend1, friend2 in
-            guard let firstCharacter1 = friend1.lastName.first,
-                  let firstCharacter2 = friend2.lastName.first else { return true }
-            return firstCharacter1 < firstCharacter2
-        }
-        return self.friends
-    }
-    
-    func getLabelForFriend(_ friends : [VKFriend]) -> [String] {
-        
-        self.sectionLabels.removeAll()
-        for friend in friends {
-            let firstChar = String(friend.lastName.lowercased().first!)
-            if self.sectionLabels.isEmpty || self.sectionLabels.last != firstChar {
-                self.sectionLabels.append(firstChar)
+    var dataForShowed = [VKFriendSection]()
+    var sectionedFriends: [VKFriendSection] {
+        guard let friends = friends else { return [] }
+        return friends.reduce(into: [VKFriendSection]() ) {
+            currentSectionFriends, friend in
+            guard let firstLetter = friend.lastName.first else { return }
+            
+            if let currentSectionFriendFirstLetterIndex = currentSectionFriends.firstIndex(where: { $0.title == firstLetter }) {
+                
+                let oldSection = currentSectionFriends[currentSectionFriendFirstLetterIndex]
+                let updatedSection = VKFriendSection(title: firstLetter, friends: oldSection.friends + [friend])
+                currentSectionFriends[currentSectionFriendFirstLetterIndex] = updatedSection
+                
+            } else {
+                let newSection = VKFriendSection(title: firstLetter, friends: [friend])
+                currentSectionFriends.append(newSection)
             }
-        }
-        return self.sectionLabels
+        }.sorted()
     }
     
-    func getFriendsForLable(_ friends : [VKFriend], _ sectionLabels : [String]) -> [[VKFriend]] {
-           
-        self.filteredFriends = friends
-        if !self.friendForLabels.isEmpty {
-            friendForLabels.removeAll()
-        }
-        for i in 0..<sectionLabels.count {
-            self.friendForLabels.append(filteredFriends.filter {
-                $0.lastName.lowercased().hasPrefix(sectionLabels[i])
-            })
-        }
-        return self.friendForLabels
-    }
-    
+//    func getSorted(inOut: [VKFriend] ) -> [VKFriend] {
+//
+//        self.friends = inOut.sorted { friend1, friend2 in
+//            guard let firstCharacter1 = friend1.lastName.first,
+//                  let firstCharacter2 = friend2.lastName.first else { return true }
+//            return firstCharacter1 < firstCharacter2
+//        }
+//        return self.friends
+//    }
+//
+//    func getLabelForFriend(_ friends : [VKFriend]) -> [String] {
+//
+//        self.sectionLabels.removeAll()
+//        for friend in friends {
+//            let firstChar = String(friend.lastName.lowercased().first!)
+//            if self.sectionLabels.isEmpty || self.sectionLabels.last != firstChar {
+//                self.sectionLabels.append(firstChar)
+//            }
+//        }
+//        return self.sectionLabels
+//    }
+//
+//    func getFriendsForLable(_ friends : [VKFriend], _ sectionLabels : [String]) -> [[VKFriend]] {
+//
+//        self.filteredFriends = friends
+//        if !self.friendForLabels.isEmpty {
+//            friendForLabels.removeAll()
+//        }
+//        for i in 0..<sectionLabels.count {
+//            self.friendForLabels.append(filteredFriends.filter {
+//                $0.lastName.lowercased().hasPrefix(sectionLabels[i])
+//            })
+//        }
+//        return self.friendForLabels
+//    }
+//
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,53 +107,45 @@ class VKFriendTableViewController: UITableViewController {
         self.table_item1.keyboardDismissMode = .onDrag
         searchBar.delegate = self
         self.table_item1.tableHeaderView = searchBar
-        self.filteredFriends = friends
+//        table_item1.dataSource = self
+//        table_item1.delegate = self
+        dataForShowed = sectionedFriends
         
   }
     // MARK: - Table view data source
 
     override func viewWillAppear(_ animated: Bool) {
-        netSession.loadFriends(completionHandler: { result in
+        netSession.loadFriends(completionHandler: { [self] result in
             switch result {
             case let .failure(error):
                 print(error)
             case let .success(friends):
-                self.friends = friends
-                if self.friends.count > 0 {
-                    let friendsWithoutDeleted = self.friends.filter {
-                        !$0.firstName.isEmpty && !$0.lastName.isEmpty
-                    }
-                    self.filteredFriends = self.getSorted(inOut: friendsWithoutDeleted)
-                    self.friendForLabels = self.getFriendsForLable(self.friends,self.getLabelForFriend(self.friends))
-                    
-                }
+                try? RealmAdds.save(items: friends, configuration: RealmAdds.deleteIfMigration, update: .modified)
+
+//                self.friends = friends
+//                if self.friends.count > 0 {
+//                    let friendsWithoutDeleted = self.friends.filter {
+//                        !$0.firstName.isEmpty && !$0.lastName.isEmpty
+//                    }
+//                    self.filteredFriends = self.getSorted(inOut: friendsWithoutDeleted)
+//                    self.friendForLabels = self.getFriendsForLable(self.friends,self.getLabelForFriend(self.friends))
+//
+//                }
+                self.dataForShowed = self.sectionedFriends
                 self.table_item1.reloadData()
-                self.filteredFriends = friends
+ //               self.filteredFriends = friends
             }
         })
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        if sectionLabels.count > 0 {
-            return sectionLabels.count
-        }
-        return 1
+        return dataForShowed.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if self.friendForLabels.count > 0
-        {
-            self.friendForLabels[section].removeAll()
-            self.friendForLabels[section] = filteredFriends.filter {
-                $0.lastName.lowercased().hasPrefix(sectionLabels[section])
-            }
-            return friendForLabels[section].count
-            
-        } else {
-            return 1
-        }
+        return dataForShowed[section].friends.count
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -145,11 +160,11 @@ class VKFriendTableViewController: UITableViewController {
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if self.friendForLabels.count > 0 {
+        if self.dataForShowed.count > 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FriendCell", for: indexPath) as! FriendTableViewCell
             
-            cell.friendName.text = self.friendForLabels[indexPath.section][indexPath.row].lastName + " " + self.friendForLabels[indexPath.section][indexPath.row].firstName
-            cell.avatarView.imageView.kf.setImage(with: self.friendForLabels[indexPath.section][indexPath.row].photoUrl)
+            cell.friendName.text = self.dataForShowed[indexPath.section].friends[indexPath.row].lastName + " " + self.dataForShowed[indexPath.section].friends[indexPath.row].firstName
+            cell.avatarView.imageView.kf.setImage(with: self.dataForShowed[indexPath.section].friends[indexPath.row].photoUrl)
             
             if indexPath.section % 2 == 0
             {
@@ -168,6 +183,10 @@ class VKFriendTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return dataForShowed[section].title.uppercased()
     }
   
     var currIndex: IndexPath?
@@ -207,47 +226,41 @@ class VKFriendTableViewController: UITableViewController {
         guard let indexPath = self.currIndex, segue.identifier == "showCollection" else { return }
         
         let vc = segue.destination as? VKFriendPhotosCollectionViewController
-        vc?.data = self.friendForLabels[indexPath.section][indexPath.row]
-//        netSession.loadPics(owner: (vc?.data.id)!, completionHandler: { result in
-//            switch result {
-//            case let .failure(error):
-//                print(error)
-//            case let .success(photos):
-//                self.photos = photos
-//            }
-//        })
-        vc?.photos = self.photos
+        vc?.data = self.dataForShowed[indexPath.section].friends[indexPath.row]
+//        vc?.photos = self.photos
     }
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if sectionLabels.count > 0 {
-            return sectionLabels[section].uppercased()
-        }
-        return "1"
-    }
 }
 
 extension VKFriendTableViewController : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        self.friendForLabels.removeAll()
-        self.sectionLabels.removeAll()
+       self.dataForShowed.removeAll()
+
+        
         
         if searchText.isEmpty {
-            
-            self.friendForLabels = self.getFriendsForLable(self.friends, getLabelForFriend(self.friends))
+            self.dataForShowed = sectionedFriends
             self.table_item1.reloadData()
             
         } else {
-            
-            self.filteredFriends = self.friends.filter {
-                $0.lastName.lowercased().contains(searchText.lowercased())
+            for section in sectionedFriends {
+                var sortedFriends = section.friends.filter ({$0.lastName.lowercased().contains(searchText.lowercased())})
+                               
+                if sortedFriends.isEmpty {
+                    continue
+                } else {
+                    self.dataForShowed.append ( VKFriendSection.init(
+                                                title: section.title,
+                                                friends: sortedFriends)
+                    )
+                }
             }
-            self.friendForLabels = self.getFriendsForLable(self.filteredFriends, getLabelForFriend(self.filteredFriends))
             self.table_item1.reloadData()
             
         }
     }
-    
 }
+    
+
 
