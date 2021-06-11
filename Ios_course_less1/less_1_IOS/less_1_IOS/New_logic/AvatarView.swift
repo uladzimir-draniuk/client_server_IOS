@@ -25,8 +25,6 @@ class AvatarView : UIView {
     
     @IBInspectable var shaddowOffset : CGSize = .zero {
         didSet {
-            //self.layer.shadowColor = UIColor.black.cgColor
-
             self.layer.shadowOffset = shaddowOffset
         }
     }
