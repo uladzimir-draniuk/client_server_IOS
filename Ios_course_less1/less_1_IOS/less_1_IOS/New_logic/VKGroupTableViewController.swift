@@ -19,7 +19,7 @@ class VKGroupTableViewController: UITableViewController {
     
     @IBOutlet var table_group: UITableView!
     
-    
+    private var notification: NotificationToken?
     
     @IBAction func pushBarButton(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "psubBarButton", sender: self)
@@ -51,6 +51,18 @@ class VKGroupTableViewController: UITableViewController {
 
         table_group.register(UINib(nibName: "GroupTableViewCell", bundle: nil), forCellReuseIdentifier: "groupCell")
         self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        self.notification = groups?.observe({  [weak self] change in
+            guard let self = self else { return}
+            switch change {
+            case .initial:
+                break
+            case let .update(results, deletions, insertions, modifications):
+                self.table_group.reloadData()
+            case let .error(error):
+                print(error)
+            }
+        })
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -68,6 +80,10 @@ class VKGroupTableViewController: UITableViewController {
                 self.table_group.reloadData()
             }
          })
+    }
+    
+    deinit {
+        notification?.invalidate()
     }
     
     // MARK: - Table view data source

@@ -20,7 +20,7 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
     
     private let reuseIdentifier = "PhotoCell"
     var data : VKFriend?
-    
+   
     private lazy var friend: VKFriend? =
         data.flatMap {
             try? Realm(configuration: RealmAdds.deleteIfMigration)

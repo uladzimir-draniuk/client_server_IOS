@@ -14,6 +14,8 @@ class VKFriendTableViewController: UITableViewController {
     
     private var friends: Results<VKFriend>? = try? RealmAdds.get(type: VKFriend.self)
     
+    private var notification: NotificationToken?
+    
     @IBOutlet var table_item1: UITableView!
     
     var dataForShowed = [VKFriendSection]()
@@ -59,11 +61,26 @@ class VKFriendTableViewController: UITableViewController {
                 )
             )
         
+        self.notification = friends?.observe({  [weak self] change in
+            guard let self = self else { return}
+            switch change {
+            case .initial:
+                break
+            case let .update(results, deletions, insertions, modifications):
+                self.table_item1.reloadData()
+            case let .error(error):
+                print(error)
+            }
+        })
         table_item1.keyboardDismissMode = .onDrag
         searchBar.delegate = self
         table_item1.tableHeaderView = searchBar
         dataForShowed = sectionedFriends
   }
+    
+    deinit {
+        notification?.invalidate()
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         netSession.loadFriends(completionHandler: { [self] result in
