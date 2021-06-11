@@ -17,7 +17,7 @@ class VKFriend : RealmSwift.Object {
     @objc dynamic var firstName: String = ""
     @objc dynamic var lastName: String = ""
     
-//    var photos = List<VKPhoto>()
+    var photos = List<VKPhoto>()
     
     var photoUrl: URL? { URL(string: photoUrlString) }
     

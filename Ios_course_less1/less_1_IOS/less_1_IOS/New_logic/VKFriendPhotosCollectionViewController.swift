@@ -16,7 +16,7 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
 
     private var netSession = VKServiceFunc.init(token: Session.shared.token)
     
-    private var photos: Results<VKPhoto>? = try? RealmAdds.get(type: VKPhoto.self)
+    private var photos: [VKPhoto] = []
     
     private let reuseIdentifier = "PhotoCell"
     var data : VKFriend?
@@ -67,6 +67,8 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
      */
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         if let friendId = friend?.id {
             netSession.loadPics(owner: friendId, completionHandler: { [weak self] result in
                 switch result {
@@ -77,9 +79,10 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
                     do {
                         let realm = try Realm()
                         try realm.write {
-//                            friend.photos.removeAll()
-//                            friend.photos.append(objectsIn: photos)
+                            friend.photos.removeAll()
+                            friend.photos.append(objectsIn: photos)
                         }
+                        self?.photos = photos
                     } catch {
                         print(error)
                     }
@@ -110,16 +113,15 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return friend?.photos[section].count ?? 0
-        return 0
+        return photos.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FriendPhotosCollectionViewCell
         
 //        guard let count = friend?.photos.count else {return cell}
-        guard let count = self.photos?.count else {return cell}
-        if indexPath.item < count {
+//        let count = photos.count {} else {return cell}
+        if indexPath.item < photos.count {
             if let photoMUrl = getMSizePhotoUrl(index: indexPath.row) {
                 cell.photoFriend.kf.setImage(with: photoMUrl)
             } else {
@@ -132,13 +134,12 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
    
     func getMSizePhotoUrl (index: Int) -> URL? {
 //        if let photo = friend?.photos[index] {
-        if let photo = self.photos?[index] {
+        let photo = photos[index]
         for size in photo.photosSize {
                 if size.type == "p" {
                     return size.photoUrl
                 }
             }
-        }
         return .none
     }
 }
