@@ -156,7 +156,6 @@ class VKFriendTableViewController: UITableViewController {
                     }
             )
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -167,7 +166,6 @@ class VKFriendTableViewController: UITableViewController {
         let vc = segue.destination as? VKFriendPhotosCollectionViewController
         vc?.data = dataForShowed[indexPath.section].friends[indexPath.row]
     }
-
 }
 
 extension VKFriendTableViewController : UISearchBarDelegate {
@@ -184,12 +182,9 @@ extension VKFriendTableViewController : UISearchBarDelegate {
                 if sortedFriends.isEmpty {
                     continue
                 } else {
-                    dataForShowed.append ( VKFriendSection.init(
-                                                title: section.title,
-                                                friends: sortedFriends))
+                    dataForShowed.append ( VKFriendSection.init( title: section.title, friends: sortedFriends))
                 }
             }
-
         }
         table_item1.reloadData()
     }

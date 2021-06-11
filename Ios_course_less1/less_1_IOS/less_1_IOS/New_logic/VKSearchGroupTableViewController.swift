@@ -15,9 +15,9 @@ class VKSearchGroupTableViewController: UITableViewController {
     
     @IBOutlet var table_group: UITableView!
     
-//    @IBAction func pushBarButton(_ sender: UIBarButtonItem) {
-//        self.performSegue(withIdentifier: "psubBarButton", sender: self)
-//    }
+    @IBAction func pushBarButton(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "psubBarButton", sender: self)
+    }
     
     func getSorted(inOut: [VKGroup] ) -> [VKGroup] {
         
@@ -54,14 +54,11 @@ class VKSearchGroupTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        
-        return searchGroups.count
+         return searchGroups.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -101,8 +98,7 @@ class VKSearchGroupTableViewController: UITableViewController {
                     }
             )
         }
-        
-    }
+     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)

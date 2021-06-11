@@ -41,31 +41,6 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
 
      }
     
-    /*
-     if let currentFriend = displayedFriend?.id {
-         networkSession.loadPhotos(owner: currentFriend, completionHandler: { [weak self] result in //617849582
-             switch result {
-             case let .failure(error):
-                 print(error)
-             case let .success(photos):
-                 guard let friend = self?.friend else { return }
-                 do {
-                     let realm = try Realm()
-                     
-                     try realm.write {
-                         friend.photos.removeAll()
-                         friend.photos.append(objectsIn: photos)
-                     }
-                     
-                 } catch {
-                     print(error)
-                 }
-             }
-         })
-     }
- }
-     */
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -90,8 +65,7 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
                 }
             })
         }
-        
-    }
+     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
@@ -106,6 +80,7 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
         
         let vc = segue.destination as? PhotoGalleryViewController
         vc?.photoNum = indexPath.row
+        vc?.friend = friend
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -119,10 +94,8 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FriendPhotosCollectionViewCell
         
-//        guard let count = friend?.photos.count else {return cell}
-//        let count = photos.count {} else {return cell}
         if indexPath.item < photos.count {
-            if let photoMUrl = getMSizePhotoUrl(index: indexPath.row) {
+            if let photoMUrl = getPSizePhotoUrl(index: indexPath.row) {
                 cell.photoFriend.kf.setImage(with: photoMUrl)
             } else {
                 cell.photoFriend.kf.setImage(with: friend?.photoUrl)
@@ -132,8 +105,8 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
     }
     
    
-    func getMSizePhotoUrl (index: Int) -> URL? {
-//        if let photo = friend?.photos[index] {
+    func getPSizePhotoUrl (index: Int) -> URL? {
+
         let photo = photos[index]
         for size in photo.photosSize {
                 if size.type == "p" {

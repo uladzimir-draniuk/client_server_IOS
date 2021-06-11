@@ -87,7 +87,6 @@ class VKServiceFunc {
             }
         }
     }
-
     
     func loadPics(owner: Int, completionHandler: @escaping ((Result<[VKPhoto], Error>) -> Void)) {
         let path = "/method/photos.get"

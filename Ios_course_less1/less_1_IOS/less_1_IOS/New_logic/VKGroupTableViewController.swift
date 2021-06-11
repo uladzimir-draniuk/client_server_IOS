@@ -43,16 +43,7 @@ class VKGroupTableViewController: UITableViewController {
             }
         }.sorted()
     }
-//    func getSorted(inOut: [VKGroup] ) -> [VKGroup] {
-//
-//        self.groups = inOut.sorted { group1, group2 in
-//            guard let firstCharacter1 = group1.name.first,
-//                  let firstCharacter2 = group2.name.first else { return true }
-//            return firstCharacter1 < firstCharacter2
-//        }
-//        return self.groups
-//    }
-//
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,7 +54,8 @@ class VKGroupTableViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        // super.viewWillAppear(true)
+        super.viewWillAppear(true)
+        
         showedGroups.removeAll()
         
         netSession.loadGroup(completionHandler: { result in
@@ -73,7 +65,6 @@ class VKGroupTableViewController: UITableViewController {
             case let .success(groups):
                 self.showedGroups = groups
                 try? RealmAdds.save(items: groups, configuration: RealmAdds.deleteIfMigration, update: .modified)
-                //               self.groups = self.getSorted(inOut: groups)
                 self.table_group.reloadData()
             }
          })
@@ -82,16 +73,12 @@ class VKGroupTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return sectionedGroups.count
+         return sectionedGroups.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        
-        return sectionedGroups[section].groups.count
+         return sectionedGroups[section].groups.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as? GroupTableViewCell else { return UITableViewCell() }
@@ -106,7 +93,6 @@ class VKGroupTableViewController: UITableViewController {
         {
             cell.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.8)
         }
-        
         return cell
     }
     
@@ -127,9 +113,7 @@ class VKGroupTableViewController: UITableViewController {
                 initialSpringVelocity: 0,
                 options: .curveEaseOut,
                 animations:
-                    {
-                        cell1.groupImage.transform = .identity
-                    },
+                    { cell1.groupImage.transform = .identity },
                 completion:
                     {_ in
                         tableView.deselectRow(at: indexPath, animated: true)
@@ -138,7 +122,6 @@ class VKGroupTableViewController: UITableViewController {
                     }
             )
         }
-        
     }
   
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -170,7 +153,7 @@ class VKGroupTableViewController: UITableViewController {
         guard let destination = segue.destination as? VKGroupViewController else { return }
         
         guard let indexPath = self.currIndex else { return }
-        destination.group = self.groups![indexPath.row]
+        destination.group = sectionedGroups[indexPath.section].groups[indexPath.row]
         destination.modalPresentationStyle = .automatic
     }
 }

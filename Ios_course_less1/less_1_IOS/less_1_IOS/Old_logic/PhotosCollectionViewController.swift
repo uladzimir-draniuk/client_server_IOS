@@ -49,7 +49,7 @@ class PhotosCollectionViewController: UICollectionViewController {
         guard let indexPath = self.currIndex , segue.identifier == "showFriendImages" else { return }
         
         let vc = segue.destination as? PhotoGalleryViewController
-        vc?.data = self.data
+ //       vc?.frien = self.data
         vc?.photoNum = indexPath.row
     }
     
