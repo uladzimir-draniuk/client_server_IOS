@@ -7,69 +7,106 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 class VKGroupTableViewController: UITableViewController {
+    
+ private var groups: Results<VKGroup>? = try? RealmAdds.get(type: VKGroup.self)
 
-    private var groups = [VKGroup]()
+    var showedGroups = [VKGroup]()
     
     private var netSession = VKServiceFunc.init(token: Session.shared.token)
     
     @IBOutlet var table_group: UITableView!
     
+    
+    
     @IBAction func pushBarButton(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "psubBarButton", sender: self)
     }
     
-    func getSorted(inOut: [VKGroup] ) -> [VKGroup] {
-        
-        self.groups = inOut.sorted { group1, group2 in
-            guard let firstCharacter1 = group1.name.first,
-                  let firstCharacter2 = group2.name.first else { return true }
-            return firstCharacter1 < firstCharacter2
-        }
-        return self.groups
-    }
     
+    var sectionedGroups: [GroupSection] {
+        showedGroups.reduce(into: []) {
+            currentSectionGroups, group in
+            guard let firstLetter = group.name.first else { return }
+            
+            if let currentSectionGroupFirstLetterIndex = currentSectionGroups.firstIndex(where: { $0.title == firstLetter }) {
+                
+                let oldSection = currentSectionGroups[currentSectionGroupFirstLetterIndex]
+                let updatedSection = GroupSection(title: firstLetter, groups: oldSection.groups + [group])
+                currentSectionGroups[currentSectionGroupFirstLetterIndex] = updatedSection
+                
+            } else {
+                let newSection = GroupSection(title: firstLetter, groups: [group])
+                currentSectionGroups.append(newSection)
+            }
+        }.sorted()
+    }
+//    func getSorted(inOut: [VKGroup] ) -> [VKGroup] {
+//
+//        self.groups = inOut.sorted { group1, group2 in
+//            guard let firstCharacter1 = group1.name.first,
+//                  let firstCharacter2 = group2.name.first else { return true }
+//            return firstCharacter1 < firstCharacter2
+//        }
+//        return self.groups
+//    }
+//
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationItem.title = "My Groups"
 
         table_group.register(UINib(nibName: "GroupTableViewCell", bundle: nil), forCellReuseIdentifier: "groupCell")
         self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        
-        return groups.count
-    }
-
     override func viewWillAppear(_ animated: Bool) {
-        self.groups.removeAll()
+        // super.viewWillAppear(true)
+        showedGroups.removeAll()
+        
         netSession.loadGroup(completionHandler: { result in
             switch result {
             case let .failure(error):
                 print(error)
             case let .success(groups):
-                self.groups = self.getSorted(inOut: groups)
+                self.showedGroups = groups
+                try? RealmAdds.save(items: groups, configuration: RealmAdds.deleteIfMigration, update: .modified)
+                //               self.groups = self.getSorted(inOut: groups)
+                self.table_group.reloadData()
             }
-            self.table_group.reloadData()
-        })
+         })
     }
     
+    // MARK: - Table view data source
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return sectionedGroups.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        
+        return sectionedGroups[section].groups.count
+    }
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! GroupTableViewCell
-
-        cell.groupImage.kf.setImage(with: self.groups[indexPath.row].photoUrl)
-        cell.groupName.text = self.groups[indexPath.row].name
-
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as? GroupTableViewCell else { return UITableViewCell() }
+        
+        cell.groupImage.kf.setImage(with: sectionedGroups[indexPath.section].groups[indexPath.row].photoUrl)
+        cell.groupName.text = sectionedGroups[indexPath.section].groups[indexPath.row].name
+        
+        if indexPath.section % 2 == 0
+        {
+            cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.8)
+        } else
+        {
+            cell.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.8)
+        }
+        
         return cell
     }
     
@@ -90,9 +127,9 @@ class VKGroupTableViewController: UITableViewController {
                 initialSpringVelocity: 0,
                 options: .curveEaseOut,
                 animations:
-                {
-                    cell1.groupImage.transform = .identity
-                },
+                    {
+                        cell1.groupImage.transform = .identity
+                    },
                 completion:
                     {_ in
                         tableView.deselectRow(at: indexPath, animated: true)
@@ -103,6 +140,28 @@ class VKGroupTableViewController: UITableViewController {
         }
         
     }
+  
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if section % 2 == 0 {
+            (view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.8)
+        } else {
+            (view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.8)
+        }
+        let header = view as! UITableViewHeaderFooterView
+            header.textLabel?.textColor = UIColor.red
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionedGroups[section].title.uppercased()
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -111,7 +170,7 @@ class VKGroupTableViewController: UITableViewController {
         guard let destination = segue.destination as? VKGroupViewController else { return }
         
         guard let indexPath = self.currIndex else { return }
-        destination.group = self.groups[indexPath.row]
+        destination.group = self.groups![indexPath.row]
         destination.modalPresentationStyle = .automatic
     }
 }

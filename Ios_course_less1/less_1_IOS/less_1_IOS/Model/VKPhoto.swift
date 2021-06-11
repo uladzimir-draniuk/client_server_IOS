@@ -14,14 +14,18 @@ import RealmSwift
 class VKPhoto : EmbeddedObject {
     @objc dynamic var photoId: Int = 0
     @objc dynamic var ownerId: Int = 0
-    @objc dynamic var count : Int = 0
+//    @objc dynamic var count : Int = 0
 
     var photosSize = List<VKPhotoSizes>()
-   
+    let count = RealmOptional<Int>()
+    
     convenience init(json: JSON) {
         self.init()
         self.photoId = json["id"].intValue
         self.ownerId = json["owner_id"].intValue
+        
+        let photoSizes = json["sizes"].arrayValue.map(VKPhotoSizes.init)
+        self.photosSize.append(objectsIn: photoSizes)
     }
 }
 

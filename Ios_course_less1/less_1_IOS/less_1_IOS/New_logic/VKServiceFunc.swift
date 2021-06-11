@@ -54,9 +54,13 @@ class VKServiceFunc {
         AF.request(baseVkUrl + path, method: .get, parameters: params).responseData { response in
             switch response.result {
             case let .success(data):
-                let groupArray = JSON(data)["response"]["items"].arrayValue
-                let groups = groupArray.map(VKGroup.init)
-                completionHandler(.success(groups))
+                do {
+                    let groupsResponse = try JSONDecoder().decode(GroupResponse.self, from: data)
+                    let groups = groupsResponse.response.items
+                    completionHandler(.success(groups))
+                } catch {
+                    completionHandler(.failure(error))
+                }
             case let .failure(error):
                 completionHandler(.failure(error))
             }
@@ -71,14 +75,19 @@ class VKServiceFunc {
         AF.request(baseVkUrl + path, method: .get, parameters: params).responseData { response in
             switch response.result {
             case let .success(data):
-                let groupArray = JSON(data)["response"]["items"].arrayValue
-                let groups = groupArray.map(VKGroup.init)
-                completionHandler(.success(groups))
+                do {
+                    let groupsResponse = try JSONDecoder().decode(GroupResponse.self, from: data)
+                    let groups = groupsResponse.response.items
+                    completionHandler(.success(groups))
+                } catch {
+                    completionHandler(.failure(error))
+                }
             case let .failure(error):
                 completionHandler(.failure(error))
             }
         }
     }
+
     
     func loadPics(owner: Int, completionHandler: @escaping ((Result<[VKPhoto], Error>) -> Void)) {
         let path = "/method/photos.get"
@@ -93,18 +102,8 @@ class VKServiceFunc {
             case let .failure(error):
                 completionHandler(.failure(error))
             case let .success(json):
-                var count = JSON(json)["response"]["count"].intValue
                 let photosJSONArray = JSON(json)["response"]["items"].arrayValue
                 let photosFriend = photosJSONArray.map(VKPhoto.init)
-                if count > 50 {
-                    count = 50
-                }
-                for index in 0..<count {
-                    let photoSizeJSONArray = JSON(json)["response"]["items"][index]["sizes"].arrayValue
-                    let photoSizeArray = photoSizeJSONArray.map(VKPhotoSizes.init)
-                    photosFriend[index].photosSize.append(objectsIn: photoSizeArray)
-                    photosFriend[index].count = count
-                }
                 completionHandler(.success(photosFriend))
             }
         }
