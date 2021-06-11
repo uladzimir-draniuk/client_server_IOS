@@ -78,7 +78,7 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
         
         guard let indexPath = currIndex , segue.identifier == "showFriendImages" else { return }
         
-        let vc = segue.destination as? PhotoGalleryViewController
+        let vc = segue.destination as? VKPhotoGalleryViewController
         vc?.photoNum = indexPath.row
         vc?.friend = friend
     }

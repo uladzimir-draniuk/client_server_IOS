@@ -1,21 +1,20 @@
 //
-//  PhotoGalleryViewController.swift
-//  less_1_IOS
+//  VKPhotoGalleryViewController.swift
+//  VKAppClone
 //
-//  Created by elf on 25.02.2021.
+//  Created by elf on 11.06.2021.
 //
+
 
 import UIKit
 import RealmSwift
 import Kingfisher
 
-class PhotoGalleryViewController: UIViewController{
+class VKPhotoGalleryViewController: UIViewController{
     
     var friend : VKFriend?
     var photoNum : Int?
     
-    
-    //    let recognizer = UIPanGestureRecognizer(target: self, action: #selector(onPan(_:)))
     
     @IBOutlet weak var photoView: UIView!
     @IBOutlet weak var galleryImageView: UIImageView!
@@ -66,7 +65,7 @@ class PhotoGalleryViewController: UIViewController{
                                     {
                                         self.galleryImageView.kf.setImage(with: self.getMaxSizePhotoUrl(index: newIndex))
                                         self.photoNum = newIndex
-                                        print("animation is done !!!")
+                                        print("animation is done !")
                                     }
                                 )
                             }
@@ -94,7 +93,7 @@ class PhotoGalleryViewController: UIViewController{
                                 animations:
                                     {
                                         self.galleryImageView.kf.setImage(with: self.getMaxSizePhotoUrl(index: newIndex))
-                                        print("animation is done,!!!")
+                                        print("animation is done !")
                                         self.photoNum = newIndex
                                     }
                             )
@@ -110,14 +109,8 @@ class PhotoGalleryViewController: UIViewController{
     func getMaxSizePhotoUrl (index: Int) -> URL? {
 
         guard let friend = friend else { return .none }
-        
         let photo = friend.photos[index]
-//        for size in photo.photosSize {
-//                if size.type == "p" {
-//                    return size.photoUrl
-//                }
-//            }
-         return photo.photosSize.last?.photoUrl
+        return photo.photosSize.last?.photoUrl
  
     }
 }

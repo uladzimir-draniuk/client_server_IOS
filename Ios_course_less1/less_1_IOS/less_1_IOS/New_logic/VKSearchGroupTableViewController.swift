@@ -131,8 +131,6 @@ extension VKSearchGroupTableViewController : UISearchBarDelegate {
                 }
             })
         }
-        
-        
     }
 }
 
