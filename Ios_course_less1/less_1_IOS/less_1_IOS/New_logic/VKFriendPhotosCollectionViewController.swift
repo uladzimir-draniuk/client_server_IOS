@@ -19,6 +19,7 @@ class VKFriendPhotosCollectionViewController: UICollectionViewController {
     private var photos: [VKPhoto] = []
     
     private let reuseIdentifier = "PhotoCell"
+    
     var data : VKFriend?
    
     private lazy var friend: VKFriend? =
