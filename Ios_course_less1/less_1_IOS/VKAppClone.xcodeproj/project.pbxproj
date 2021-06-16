@@ -16,6 +16,10 @@
 		7124967B25C4A3F30059FEE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7124967925C4A3F30059FEE0 /* Main.storyboard */; };
 		7124967D25C4A3F60059FEE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7124967C25C4A3F60059FEE0 /* Assets.xcassets */; };
 		7124968025C4A3F60059FEE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7124967E25C4A3F60059FEE0 /* LaunchScreen.storyboard */; };
+		714E2794267973BC00CD7611 /* NewsOtherInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714E2793267973BC00CD7611 /* NewsOtherInfoCell.swift */; };
+		714E2797267973DD00CD7611 /* NewsSourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714E2796267973DD00CD7611 /* NewsSourceCell.swift */; };
+		714E279A267973F200CD7611 /* NewsImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714E2799267973F200CD7611 /* NewsImageCell.swift */; };
+		714E279D2679740200CD7611 /* NewsTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714E279C2679740200CD7611 /* NewsTextCell.swift */; };
 		71752C2E25D1F50200B0A660 /* FriendPhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71752C2C25D1F50200B0A660 /* FriendPhotosCollectionViewCell.swift */; };
 		71752C2F25D1F50200B0A660 /* FriendPhotosCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71752C2D25D1F50200B0A660 /* FriendPhotosCollectionViewCell.xib */; };
 		71752C3E25D20BE300B0A660 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71752C3C25D20BE300B0A660 /* GroupTableViewCell.swift */; };
@@ -29,6 +33,7 @@
 		71E3E27B26497121006FAE22 /* VKSearchGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3E27A26497121006FAE22 /* VKSearchGroupTableViewController.swift */; };
 		71E3E27F26497F49006FAE22 /* VKGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3E27E26497F49006FAE22 /* VKGroupViewController.swift */; };
 		71E3E283264997D3006FAE22 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 71E3E282264997D3006FAE22 /* RealmSwift */; };
+		71F1ACF92677BF9A0072BE07 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 71F1ACF82677BF9A0072BE07 /* SnapKit */; };
 		71F40477262CD77300C54765 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 71F40476262CD77300C54765 /* SwiftyJSON */; };
 		71F4047B262CD7DA00C54765 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 71F4047A262CD7DA00C54765 /* Kingfisher */; };
 		71F4047E262CD85600C54765 /* VKLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F4047D262CD85600C54765 /* VKLoginViewController.swift */; };
@@ -51,6 +56,10 @@
 		7124967C25C4A3F60059FEE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7124967F25C4A3F60059FEE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7124968125C4A3F60059FEE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		714E2793267973BC00CD7611 /* NewsOtherInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsOtherInfoCell.swift; sourceTree = "<group>"; };
+		714E2796267973DD00CD7611 /* NewsSourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSourceCell.swift; sourceTree = "<group>"; };
+		714E2799267973F200CD7611 /* NewsImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsImageCell.swift; sourceTree = "<group>"; };
+		714E279C2679740200CD7611 /* NewsTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTextCell.swift; sourceTree = "<group>"; };
 		71752C2C25D1F50200B0A660 /* FriendPhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		71752C2D25D1F50200B0A660 /* FriendPhotosCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendPhotosCollectionViewCell.xib; sourceTree = "<group>"; };
 		71752C3C25D20BE300B0A660 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
@@ -79,6 +88,7 @@
 				71F40488262CDB6200C54765 /* Alamofire in Frameworks */,
 				71F4047B262CD7DA00C54765 /* Kingfisher in Frameworks */,
 				71F40477262CD77300C54765 /* SwiftyJSON in Frameworks */,
+				71F1ACF92677BF9A0072BE07 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +165,10 @@
 				71E3E27E26497F49006FAE22 /* VKGroupViewController.swift */,
 				71AC6F72267172E40026CCC6 /* RealmAdds.swift */,
 				710922D92673DB47000E89C6 /* VKPhotoGalleryViewController.swift */,
+				714E2793267973BC00CD7611 /* NewsOtherInfoCell.swift */,
+				714E2796267973DD00CD7611 /* NewsSourceCell.swift */,
+				714E2799267973F200CD7611 /* NewsImageCell.swift */,
+				714E279C2679740200CD7611 /* NewsTextCell.swift */,
 			);
 			path = New_logic;
 			sourceTree = "<group>";
@@ -180,6 +194,7 @@
 				71F4047A262CD7DA00C54765 /* Kingfisher */,
 				71F40487262CDB6200C54765 /* Alamofire */,
 				71E3E282264997D3006FAE22 /* RealmSwift */,
+				71F1ACF82677BF9A0072BE07 /* SnapKit */,
 			);
 			productName = less_1_IOS;
 			productReference = 7124967025C4A3F30059FEE0 /* VKAppClone.app */;
@@ -213,6 +228,7 @@
 				71F40479262CD7DA00C54765 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				71F40486262CDB6200C54765 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				71E3E281264997D3006FAE22 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				71F1ACF72677BF9A0072BE07 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 7124967125C4A3F30059FEE0 /* Products */;
 			projectDirPath = "";
@@ -247,6 +263,7 @@
 				71F4048B262CDC5300C54765 /* VKFriend.swift in Sources */,
 				71E3E27F26497F49006FAE22 /* VKGroupViewController.swift in Sources */,
 				71F4047E262CD85600C54765 /* VKLoginViewController.swift in Sources */,
+				714E279D2679740200CD7611 /* NewsTextCell.swift in Sources */,
 				710922DA2673DB47000E89C6 /* VKPhotoGalleryViewController.swift in Sources */,
 				7124967825C4A3F30059FEE0 /* ViewController.swift in Sources */,
 				71752C3E25D20BE300B0A660 /* GroupTableViewCell.swift in Sources */,
@@ -260,10 +277,13 @@
 				7107F75D261086780083EE0A /* Session.swift in Sources */,
 				71F40484262CDAE800C54765 /* VKServiceFunc.swift in Sources */,
 				710922DE2673DC69000E89C6 /* AvatarView.swift in Sources */,
+				714E279A267973F200CD7611 /* NewsImageCell.swift in Sources */,
 				71E3E27B26497121006FAE22 /* VKSearchGroupTableViewController.swift in Sources */,
+				714E2797267973DD00CD7611 /* NewsSourceCell.swift in Sources */,
 				718D5BF1262E286500989585 /* VKPhoto.swift in Sources */,
 				71F40481262CDA5D00C54765 /* VKFriendTableViewController.swift in Sources */,
 				71E3E2782649562F006FAE22 /* VKGroupTableViewController.swift in Sources */,
+				714E2794267973BC00CD7611 /* NewsOtherInfoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +495,14 @@
 				minimumVersion = 10.7.5;
 			};
 		};
+		71F1ACF72677BF9A0072BE07 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 		71F40475262CD77300C54765 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
@@ -506,6 +534,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 71E3E281264997D3006FAE22 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
+		};
+		71F1ACF82677BF9A0072BE07 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71F1ACF72677BF9A0072BE07 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 		71F40476262CD77300C54765 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
