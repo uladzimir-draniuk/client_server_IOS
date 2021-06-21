@@ -1,26 +1,30 @@
 //
-//  PhotoGalleryViewController.swift
-//  less_1_IOS
+//  VKPhotoGalleryViewController.swift
+//  VKAppClone
 //
-//  Created by elf on 25.02.2021.
+//  Created by elf on 11.06.2021.
 //
+
 
 import UIKit
+import RealmSwift
+import Kingfisher
 
-class PhotoGalleryViewController: UIViewController{
+class VKPhotoGalleryViewController: UIViewController{
     
-    var data : Friend!
-    var photoNum : Int!
+    var friend : VKFriend?
+    var photoNum : Int?
     
-    //    let recognizer = UIPanGestureRecognizer(target: self, action: #selector(onPan(_:)))
     
     @IBOutlet weak var photoView: UIView!
     @IBOutlet weak var galleryImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let photoNum = self.photoNum {
-            self.galleryImageView.image = UIImage(named: self.data.photos[photoNum])
+         if let photoNum = self.photoNum {
+            if let photoMUrl = getMaxSizePhotoUrl(index: photoNum) {
+                self.galleryImageView.kf.setImage(with: photoMUrl)
+            }
         }
         
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(moveToNextItem(_:)))
@@ -41,8 +45,10 @@ class PhotoGalleryViewController: UIViewController{
         //left swipe action
         case .left:
             print("left")
-            let newIndex = self.photoNum + 1
-            let isNewImageL = newIndex < self.data.photos.count
+            guard let photoNum = photoNum else { return }
+            let newIndex = photoNum + 1
+            guard let photosCount = friend?.photos.count else { return }
+            let isNewImageL = newIndex < photosCount
             
             UIView.animate(
                     withDuration: 0.4,
@@ -57,9 +63,9 @@ class PhotoGalleryViewController: UIViewController{
                                 withDuration: 0.6,
                                 animations:
                                     {
-                                        self.galleryImageView.image = UIImage(named: self.data.photos[newIndex])
+                                        self.galleryImageView.kf.setImage(with: self.getMaxSizePhotoUrl(index: newIndex))
                                         self.photoNum = newIndex
-                                        print("animation is done,!!!")
+                                        print("animation is done !")
                                     }
                                 )
                             }
@@ -69,8 +75,10 @@ class PhotoGalleryViewController: UIViewController{
         //right swipe action
         case .right:
             print("right")
-            let newIndex = self.photoNum - 1
-            let isNewImageR = newIndex >= 0 && newIndex < self.data.photos.count
+            guard let photoNum = photoNum else { return }
+            let newIndex = photoNum - 1
+            guard let photosCount = friend?.photos.count else { return }
+            let isNewImageR = newIndex >= 0 && newIndex < photosCount
             
             UIView.animate(
                 withDuration: 0.4,
@@ -84,8 +92,8 @@ class PhotoGalleryViewController: UIViewController{
                                 withDuration: 0.6,
                                 animations:
                                     {
-                                        self.galleryImageView.image = UIImage(named: self.data.photos[newIndex])
-                                        print("animation is done,!!!")
+                                        self.galleryImageView.kf.setImage(with: self.getMaxSizePhotoUrl(index: newIndex))
+                                        print("animation is done !")
                                         self.photoNum = newIndex
                                     }
                             )
@@ -97,4 +105,13 @@ class PhotoGalleryViewController: UIViewController{
             print("-")
         }
     }
+    
+    func getMaxSizePhotoUrl (index: Int) -> URL? {
+
+        guard let friend = friend else { return .none }
+        let photo = friend.photos[index]
+        return photo.photosSize.last?.photoUrl
+ 
+    }
 }
+
