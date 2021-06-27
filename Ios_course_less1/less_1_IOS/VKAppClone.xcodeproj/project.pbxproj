@@ -28,11 +28,13 @@
 		71752C4925D219E000B0A660 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71752C4725D219E000B0A660 /* FriendTableViewCell.xib */; };
 		718D5BF1262E286500989585 /* VKPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718D5BF0262E286400989585 /* VKPhoto.swift */; };
 		71AC6F73267172E40026CCC6 /* RealmAdds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AC6F72267172E40026CCC6 /* RealmAdds.swift */; };
+		71B074F126810E97001AE7B8 /* VKNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B074F026810E97001AE7B8 /* VKNews.swift */; };
 		71E3E27526494F86006FAE22 /* VKGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3E27426494F86006FAE22 /* VKGroup.swift */; };
 		71E3E2782649562F006FAE22 /* VKGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3E2772649562F006FAE22 /* VKGroupTableViewController.swift */; };
 		71E3E27B26497121006FAE22 /* VKSearchGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3E27A26497121006FAE22 /* VKSearchGroupTableViewController.swift */; };
 		71E3E27F26497F49006FAE22 /* VKGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E3E27E26497F49006FAE22 /* VKGroupViewController.swift */; };
 		71E3E283264997D3006FAE22 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 71E3E282264997D3006FAE22 /* RealmSwift */; };
+		71E76D73267BFA7700B967E7 /* VKNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E76D72267BFA7700B967E7 /* VKNewsTableViewController.swift */; };
 		71F1ACF92677BF9A0072BE07 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 71F1ACF82677BF9A0072BE07 /* SnapKit */; };
 		71F40477262CD77300C54765 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 71F40476262CD77300C54765 /* SwiftyJSON */; };
 		71F4047B262CD7DA00C54765 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 71F4047A262CD7DA00C54765 /* Kingfisher */; };
@@ -68,10 +70,12 @@
 		71752C4725D219E000B0A660 /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
 		718D5BF0262E286400989585 /* VKPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKPhoto.swift; sourceTree = "<group>"; };
 		71AC6F72267172E40026CCC6 /* RealmAdds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAdds.swift; sourceTree = "<group>"; };
+		71B074F026810E97001AE7B8 /* VKNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKNews.swift; sourceTree = "<group>"; };
 		71E3E27426494F86006FAE22 /* VKGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKGroup.swift; sourceTree = "<group>"; };
 		71E3E2772649562F006FAE22 /* VKGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKGroupTableViewController.swift; sourceTree = "<group>"; };
 		71E3E27A26497121006FAE22 /* VKSearchGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKSearchGroupTableViewController.swift; sourceTree = "<group>"; };
 		71E3E27E26497F49006FAE22 /* VKGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKGroupViewController.swift; sourceTree = "<group>"; };
+		71E76D72267BFA7700B967E7 /* VKNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKNewsTableViewController.swift; sourceTree = "<group>"; };
 		71F4047D262CD85600C54765 /* VKLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginViewController.swift; sourceTree = "<group>"; };
 		71F40480262CDA5D00C54765 /* VKFriendTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKFriendTableViewController.swift; sourceTree = "<group>"; };
 		71F40483262CDAE800C54765 /* VKServiceFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKServiceFunc.swift; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 				71F4048A262CDC5300C54765 /* VKFriend.swift */,
 				718D5BF0262E286400989585 /* VKPhoto.swift */,
 				71E3E27426494F86006FAE22 /* VKGroup.swift */,
+				71B074F026810E97001AE7B8 /* VKNews.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 				714E2796267973DD00CD7611 /* NewsSourceCell.swift */,
 				714E2799267973F200CD7611 /* NewsImageCell.swift */,
 				714E279C2679740200CD7611 /* NewsTextCell.swift */,
+				71E76D72267BFA7700B967E7 /* VKNewsTableViewController.swift */,
 			);
 			path = New_logic;
 			sourceTree = "<group>";
@@ -265,9 +271,11 @@
 				71F4047E262CD85600C54765 /* VKLoginViewController.swift in Sources */,
 				714E279D2679740200CD7611 /* NewsTextCell.swift in Sources */,
 				710922DA2673DB47000E89C6 /* VKPhotoGalleryViewController.swift in Sources */,
+				71E76D73267BFA7700B967E7 /* VKNewsTableViewController.swift in Sources */,
 				7124967825C4A3F30059FEE0 /* ViewController.swift in Sources */,
 				71752C3E25D20BE300B0A660 /* GroupTableViewCell.swift in Sources */,
 				71AC6F73267172E40026CCC6 /* RealmAdds.swift in Sources */,
+				71B074F126810E97001AE7B8 /* VKNews.swift in Sources */,
 				71752C4825D219E000B0A660 /* FriendTableViewCell.swift in Sources */,
 				7124967425C4A3F30059FEE0 /* AppDelegate.swift in Sources */,
 				71E3E27526494F86006FAE22 /* VKGroup.swift in Sources */,

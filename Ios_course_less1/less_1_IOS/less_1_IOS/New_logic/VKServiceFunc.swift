@@ -107,4 +107,24 @@ class VKServiceFunc {
             }
         }
     }
+    
+    func loadNews(completionHandler: @escaping ((Result<[VKNews], Error>) -> Void)) {
+        let path = "/method/newsfeed.get"
+//        var photoParams = baseParams
+//        photoParams["extended"] = 0
+//        photoParams["owner_id"] = owner
+//        photoParams["album_id"] = "wall"
+//        photoParams["photo_sizes"] = 1
+        
+        AF.request(baseVkUrl + path, method: .get, parameters: baseParams).responseJSON { response in
+            switch response.result {
+            case let .failure(error):
+                completionHandler(.failure(error))
+            case let .success(json):
+                let newsArray = JSON(json)["response"]["items"].arrayValue
+                let news = newsArray.map(VKNews.init)
+                completionHandler(.success(news))
+            }
+        }
+    }
 }
