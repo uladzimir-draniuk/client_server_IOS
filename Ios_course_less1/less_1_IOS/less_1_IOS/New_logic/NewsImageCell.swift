@@ -17,7 +17,7 @@ class NewsImageCell : UITableViewCell, AnyNewsCell {
         contentView.addSubview(newsImageView)
         newsImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-            make.width.equalTo(200)
+            make.height.equalTo(200)
         }
 
     }

@@ -31,7 +31,7 @@ class NewsSourceCell : UITableViewCell, AnyNewsCell {
         
         newsAuthorName.snp.makeConstraints { make in
             make.centerY.equalTo(newsAuthorImageView)
-            make.leading.equalTo(newsAuthorImageView.snp.trailing).offset(20)
+            make.leading.equalTo(newsAuthorImageView.snp.trailing).offset(12)
         }
     }
     
@@ -41,7 +41,12 @@ class NewsSourceCell : UITableViewCell, AnyNewsCell {
     
     
     public func configure (with news: VKNews) {
-        newsAuthorImageView.image = UIImage(named: "group_2")
-        newsAuthorName.text = String(news.authorId)
+        if let newsSource = news.source {
+            newsAuthorImageView.kf.setImage(with: newsSource.imageUrl)
+            newsAuthorName.text = newsSource.name
+        } else {
+            newsAuthorImageView.image = UIImage(named: "group_2")
+            newsAuthorName.text = String(news.authorId)
+        }
     }
 }

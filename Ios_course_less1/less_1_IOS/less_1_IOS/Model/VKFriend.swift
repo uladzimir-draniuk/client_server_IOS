@@ -10,8 +10,12 @@ import SwiftyJSON
 import RealmSwift
 
 
-class VKFriend : RealmSwift.Object {
+class VKFriend : RealmSwift.Object, NewsSource {
+    //MARK: Protocol conformance
+    var name: String {"\(firstName) \(lastName)" }
+    var imageUrlString: String { photoUrlString }
     
+   //MARK: - Properties
     @objc dynamic var id: Int = 0
     @objc dynamic var photoUrlString: String = ""
     @objc dynamic var firstName: String = ""

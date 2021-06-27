@@ -47,6 +47,8 @@ class VKNewsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = "News"
 
         tableView.register(NewsImageCell.self, forCellReuseIdentifier: "NewsImageCell")
         tableView.register(NewsTextCell.self, forCellReuseIdentifier: "NewsTextCell")

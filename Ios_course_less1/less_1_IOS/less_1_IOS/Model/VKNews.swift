@@ -9,12 +9,23 @@ import Foundation
 import UIKit
 import SwiftyJSON
 
+protocol NewsSource {
+    var name: String { get }
+    var imageUrlString: String { get }
+}
+
+extension NewsSource {
+    var imageUrl : URL? { URL(string: imageUrlString)}
+}
+
 class VKNews {
     var imageUrlString: String?
     var authorId: Int
     let name: String
     let isLiked: Bool
     let date : Date
+    
+    var source: NewsSource?
     
     var url: URL? { imageUrlString.flatMap { URL(string: $0)} }
     

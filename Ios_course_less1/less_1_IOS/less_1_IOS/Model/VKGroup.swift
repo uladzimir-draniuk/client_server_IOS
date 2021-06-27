@@ -9,10 +9,12 @@
 import UIKit
 import RealmSwift
 
-class VKGroup : RealmSwift.Object, Codable {
+class VKGroup : RealmSwift.Object, Codable, NewsSource {
+    var imageUrlString: String { photoUrlString }
+    
     
     @objc dynamic var groupId: Int = 0
-    @objc dynamic private var photoUrlString: String = ""
+    @objc dynamic var photoUrlString: String = ""
     @objc dynamic var name: String = ""
     @objc dynamic var screenName: String = ""
 
