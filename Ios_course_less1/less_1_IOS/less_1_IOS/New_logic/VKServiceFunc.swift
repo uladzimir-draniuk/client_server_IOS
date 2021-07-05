@@ -110,8 +110,10 @@ class VKServiceFunc {
     
     func loadNews(completionHandler: @escaping ((Result<[VKNews], Error>) -> Void)) {
         let path = "/method/newsfeed.get"
+        var feedParams = baseParams
+        feedParams["filters"] = "post, photo, wall_photo"
         
-        AF.request(baseVkUrl + path, method: .get, parameters: baseParams).responseJSON { response in
+        AF.request(baseVkUrl + path, method: .get, parameters: feedParams).responseJSON { response in
             switch response.result {
             case let .failure(error):
                 completionHandler(.failure(error))
@@ -142,24 +144,8 @@ class VKServiceFunc {
                         newGroup.screenName = group["screen_name"].stringValue
                         groups.append(newGroup)
                     }
-                    
-                    
-                    //                    13 elements
-                    //                      ▿ 0 : {
-                    //                      "type" : "page",
-                    //                      "is_admin" : 0,
-                    //                      "photo_50" : "https:\/\/sun1.beltelecom-by-minsk.userapi.com\/s\/v1\/if1\/YpHH09EUv4LS7st5vXJ74AAiBMvXj0Dk2FFl66W4afhStRW69phQwu9i7QyucWXvoLPxinV0.jpg?size=50x0&quality=96&crop=46,46,208,208&ava=1",
-                    //                      "photo_200" : "https:\/\/sun1.beltelecom-by-minsk.userapi.com\/s\/v1\/if1\/0k9GW_oN0WKquu2dj7Q64Gr5GBVSJ2XaucwIkCfOroCfH1XTtVo2SXeG7mifJh0QVNxnAolq.jpg?size=200x0&quality=96&crop=46,46,208,208&ava=1",
-                    //                      "photo_100" : "https:\/\/sun1.beltelecom-by-minsk.userapi.com\/s\/v1\/if1\/6bdu1RsdO_ZZXPCaAHwdvYHf90rbRN7F2kB5tT_RV2W7hhffol_5NDFsVw3iSbjkXskDFTdQ.jpg?size=100x0&quality=96&crop=46,46,208,208&ava=1",
-                    //                      "is_closed" : 0,
-                    //                      "is_advertiser" : 0,
-                    //                      "name" : "Уроки английского",
-                    //                      "id" : 38847637,
-                    //                      "screen_name" : "lesson.english",
-                    //                      "is_member" : 1
                 }
 
-                
                 dispatchGroup.notify(queue: DispatchQueue.global()) {
                     
                     let newsWithSource = posts.compactMap { news -> VKNews? in
@@ -172,8 +158,6 @@ class VKServiceFunc {
                             var newsGroupCopy = news
                             guard let newsAuthor = groups.first(where: { $0.groupId == -(news.authorId)}) else {return nil}
                             newsGroupCopy.source = newsAuthor
-                             
-//                            print("something TODO group parsing")
                             return newsGroupCopy
                         }
                     }

@@ -19,14 +19,15 @@ class NewsSourceCell : UITableViewCell, AnyNewsCell {
         contentView.addSubview(newsAuthorName)
         contentView.addSubview(newsDataText)
         
-        contentView.snp.makeConstraints { make in
-            make.height.equalTo(80)
-        }
+//        contentView.snp.makeConstraints { make in
+//            make.height.equalTo(80)
+//        }
         newsAuthorImageView.snp.makeConstraints { make in
             make.width.equalTo(newsAuthorImageView.snp.height)
             make.width.equalTo(50)
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().inset(12)
+            make.top.bottom.equalToSuperview().inset(12)
         }
         
         newsAuthorName.snp.makeConstraints { make in

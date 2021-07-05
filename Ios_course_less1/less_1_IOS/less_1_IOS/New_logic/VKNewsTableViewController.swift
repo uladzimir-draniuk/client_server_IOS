@@ -37,14 +37,6 @@ class VKNewsTableViewController: UITableViewController {
     
     private var news: [VKNews] = []
     
-//    private var news: [VKNews] = [
-//        VKNews.init(image: "News1", author: "Ivanov"),
-//        VKNews.init(image: "News2", author: "Petrov"),
-//        VKNews.init(image: "News3", author: "sidoroff"),
-//        VKNews.init(image: "News4", author: "Kuznetcov"),
-//        VKNews.init(image: "News5", author: "Dorogobogaev")
-//    ]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,18 +53,10 @@ class VKNewsTableViewController: UITableViewController {
                 print(error)
             case let .success(news):
                 self?.news = news
-//                try? RealmAdds.save(items: friends, configuration: RealmAdds.deleteIfMigration, update: .all)
-//                self.dataForShowed = self.sectionedFriends
                 self?.tableView.reloadData()
             }
         })
     }
-        // Uncomment the following line to preserve selection between presentationsß
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonIte
-
     
 
     // MARK: - Table view data source
@@ -115,7 +99,7 @@ class VKNewsTableViewController: UITableViewController {
             let cell = UITableViewCell()
             return cell
         }
-       
+        
     }
 
 

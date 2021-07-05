@@ -15,7 +15,7 @@ protocol NewsSource {
 }
 
 extension NewsSource {
-    var imageUrl : URL? { URL(string: imageUrlString)}
+    var imageUrl : URL? { URL(string: imageUrlString) }
 }
 
 class VKNews {
